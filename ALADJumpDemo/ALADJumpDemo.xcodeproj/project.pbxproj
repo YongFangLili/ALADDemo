@@ -1,0 +1,649 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D26DF0F1E5D65B500C8EA72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF0E1E5D65B500C8EA72 /* main.m */; };
+		3D26DF121E5D65B500C8EA72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF111E5D65B500C8EA72 /* AppDelegate.m */; };
+		3D26DF151E5D65B500C8EA72 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF141E5D65B500C8EA72 /* ViewController.m */; };
+		3D26DF1A1E5D65B500C8EA72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D26DF191E5D65B500C8EA72 /* Assets.xcassets */; };
+		3D26DF1D1E5D65B500C8EA72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D26DF1B1E5D65B500C8EA72 /* LaunchScreen.storyboard */; };
+		3D26DF281E5D65B500C8EA72 /* ALADJumpDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF271E5D65B500C8EA72 /* ALADJumpDemoTests.m */; };
+		3D26DF331E5D65B500C8EA72 /* ALADJumpDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF321E5D65B500C8EA72 /* ALADJumpDemoUITests.m */; };
+		3D26DF481E5D660400C8EA72 /* ALADJumpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF431E5D660400C8EA72 /* ALADJumpManager.m */; };
+		3D26DF491E5D660400C8EA72 /* ALADJumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF451E5D660400C8EA72 /* ALADJumpView.m */; };
+		3D26DF521E5D6DFD00C8EA72 /* ALADJumpConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF511E5D6DFD00C8EA72 /* ALADJumpConstant.m */; };
+		3D26DF551E5D71FB00C8EA72 /* ADvertisementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF541E5D71FB00C8EA72 /* ADvertisementManager.m */; };
+		3D492C911E60397B0007022A /* ADALCustomerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D492C901E60397B0007022A /* ADALCustomerView.m */; };
+		B18DE5B07625F427FB2EC90A /* libPods-ALADJumpDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF77F29167F6AC7A0BFD9A5 /* libPods-ALADJumpDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D26DF241E5D65B500C8EA72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D26DF021E5D65B500C8EA72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D26DF091E5D65B500C8EA72;
+			remoteInfo = ALADJumpDemo;
+		};
+		3D26DF2F1E5D65B500C8EA72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D26DF021E5D65B500C8EA72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D26DF091E5D65B500C8EA72;
+			remoteInfo = ALADJumpDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D0D5205223BB9E0D66CBA5E /* Pods-ALADJumpDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALADJumpDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ALADJumpDemo/Pods-ALADJumpDemo.release.xcconfig"; sourceTree = "<group>"; };
+		3D26DF0A1E5D65B500C8EA72 /* ALADJumpDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALADJumpDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D26DF0E1E5D65B500C8EA72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3D26DF101E5D65B500C8EA72 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3D26DF111E5D65B500C8EA72 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3D26DF131E5D65B500C8EA72 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3D26DF141E5D65B500C8EA72 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3D26DF191E5D65B500C8EA72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3D26DF1C1E5D65B500C8EA72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3D26DF1E1E5D65B500C8EA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D26DF231E5D65B500C8EA72 /* ALADJumpDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALADJumpDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D26DF271E5D65B500C8EA72 /* ALADJumpDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALADJumpDemoTests.m; sourceTree = "<group>"; };
+		3D26DF291E5D65B500C8EA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D26DF2E1E5D65B500C8EA72 /* ALADJumpDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALADJumpDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D26DF321E5D65B500C8EA72 /* ALADJumpDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALADJumpDemoUITests.m; sourceTree = "<group>"; };
+		3D26DF341E5D65B500C8EA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D26DF411E5D660400C8EA72 /* ALADJumEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumEnum.h; sourceTree = "<group>"; };
+		3D26DF421E5D660400C8EA72 /* ALADJumpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpManager.h; sourceTree = "<group>"; };
+		3D26DF431E5D660400C8EA72 /* ALADJumpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpManager.m; sourceTree = "<group>"; };
+		3D26DF441E5D660400C8EA72 /* ALADJumpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpView.h; sourceTree = "<group>"; };
+		3D26DF451E5D660400C8EA72 /* ALADJumpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpView.m; sourceTree = "<group>"; };
+		3D26DF4B1E5D668B00C8EA72 /* ALADJumpHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALADJumpHeader.h; sourceTree = "<group>"; };
+		3D26DF4D1E5D6A6100C8EA72 /* ALADJumpConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALADJumpConstant.h; sourceTree = "<group>"; };
+		3D26DF511E5D6DFD00C8EA72 /* ALADJumpConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpConstant.m; sourceTree = "<group>"; };
+		3D26DF531E5D71FB00C8EA72 /* ADvertisementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADvertisementManager.h; sourceTree = "<group>"; };
+		3D26DF541E5D71FB00C8EA72 /* ADvertisementManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADvertisementManager.m; sourceTree = "<group>"; };
+		3D26DF5C1E5D7C6600C8EA72 /* ALADDefineHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALADDefineHeader.h; sourceTree = "<group>"; };
+		3D492C8F1E60397B0007022A /* ADALCustomerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADALCustomerView.h; sourceTree = "<group>"; };
+		3D492C901E60397B0007022A /* ADALCustomerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADALCustomerView.m; sourceTree = "<group>"; };
+		7EF77F29167F6AC7A0BFD9A5 /* libPods-ALADJumpDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ALADJumpDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		888A067552C979A9D7BD22C6 /* Pods-ALADJumpDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALADJumpDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ALADJumpDemo/Pods-ALADJumpDemo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D26DF071E5D65B500C8EA72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B18DE5B07625F427FB2EC90A /* libPods-ALADJumpDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D26DF201E5D65B500C8EA72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D26DF2B1E5D65B500C8EA72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D26DF011E5D65B500C8EA72 = {
+			isa = PBXGroup;
+			children = (
+				3D26DF0C1E5D65B500C8EA72 /* ALADJumpDemo */,
+				3D26DF261E5D65B500C8EA72 /* ALADJumpDemoTests */,
+				3D26DF311E5D65B500C8EA72 /* ALADJumpDemoUITests */,
+				3D26DF0B1E5D65B500C8EA72 /* Products */,
+				45CFCEE99FF0925873BFD063 /* Pods */,
+				C5C577E03A70C6F60DC935D7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3D26DF0B1E5D65B500C8EA72 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D26DF0A1E5D65B500C8EA72 /* ALADJumpDemo.app */,
+				3D26DF231E5D65B500C8EA72 /* ALADJumpDemoTests.xctest */,
+				3D26DF2E1E5D65B500C8EA72 /* ALADJumpDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D26DF0C1E5D65B500C8EA72 /* ALADJumpDemo */ = {
+			isa = PBXGroup;
+			children = (
+				3D26DF401E5D660400C8EA72 /* ALADJumpManager */,
+				3D26DF101E5D65B500C8EA72 /* AppDelegate.h */,
+				3D26DF111E5D65B500C8EA72 /* AppDelegate.m */,
+				3D26DF131E5D65B500C8EA72 /* ViewController.h */,
+				3D26DF141E5D65B500C8EA72 /* ViewController.m */,
+				3D26DF191E5D65B500C8EA72 /* Assets.xcassets */,
+				3D26DF1B1E5D65B500C8EA72 /* LaunchScreen.storyboard */,
+				3D26DF1E1E5D65B500C8EA72 /* Info.plist */,
+				3D26DF0D1E5D65B500C8EA72 /* Supporting Files */,
+				3D26DF531E5D71FB00C8EA72 /* ADvertisementManager.h */,
+				3D26DF541E5D71FB00C8EA72 /* ADvertisementManager.m */,
+				3D492C8F1E60397B0007022A /* ADALCustomerView.h */,
+				3D492C901E60397B0007022A /* ADALCustomerView.m */,
+			);
+			path = ALADJumpDemo;
+			sourceTree = "<group>";
+		};
+		3D26DF0D1E5D65B500C8EA72 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D26DF0E1E5D65B500C8EA72 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3D26DF261E5D65B500C8EA72 /* ALADJumpDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				3D26DF271E5D65B500C8EA72 /* ALADJumpDemoTests.m */,
+				3D26DF291E5D65B500C8EA72 /* Info.plist */,
+			);
+			path = ALADJumpDemoTests;
+			sourceTree = "<group>";
+		};
+		3D26DF311E5D65B500C8EA72 /* ALADJumpDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3D26DF321E5D65B500C8EA72 /* ALADJumpDemoUITests.m */,
+				3D26DF341E5D65B500C8EA72 /* Info.plist */,
+			);
+			path = ALADJumpDemoUITests;
+			sourceTree = "<group>";
+		};
+		3D26DF401E5D660400C8EA72 /* ALADJumpManager */ = {
+			isa = PBXGroup;
+			children = (
+				3D26DF4B1E5D668B00C8EA72 /* ALADJumpHeader.h */,
+				3D26DF421E5D660400C8EA72 /* ALADJumpManager.h */,
+				3D26DF431E5D660400C8EA72 /* ALADJumpManager.m */,
+				3D26DF441E5D660400C8EA72 /* ALADJumpView.h */,
+				3D26DF451E5D660400C8EA72 /* ALADJumpView.m */,
+				3D26DF4D1E5D6A6100C8EA72 /* ALADJumpConstant.h */,
+				3D26DF511E5D6DFD00C8EA72 /* ALADJumpConstant.m */,
+				3D26DF5C1E5D7C6600C8EA72 /* ALADDefineHeader.h */,
+				3D26DF411E5D660400C8EA72 /* ALADJumEnum.h */,
+			);
+			path = ALADJumpManager;
+			sourceTree = "<group>";
+		};
+		45CFCEE99FF0925873BFD063 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				888A067552C979A9D7BD22C6 /* Pods-ALADJumpDemo.debug.xcconfig */,
+				1D0D5205223BB9E0D66CBA5E /* Pods-ALADJumpDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C5C577E03A70C6F60DC935D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7EF77F29167F6AC7A0BFD9A5 /* libPods-ALADJumpDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D26DF091E5D65B500C8EA72 /* ALADJumpDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D26DF371E5D65B500C8EA72 /* Build configuration list for PBXNativeTarget "ALADJumpDemo" */;
+			buildPhases = (
+				F4D522A479124FDBEDE53FDC /* [CP] Check Pods Manifest.lock */,
+				3D26DF061E5D65B500C8EA72 /* Sources */,
+				3D26DF071E5D65B500C8EA72 /* Frameworks */,
+				3D26DF081E5D65B500C8EA72 /* Resources */,
+				314E8E9A8B399CDBD579D696 /* [CP] Embed Pods Frameworks */,
+				39D0E088ED8C5D410460992E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ALADJumpDemo;
+			productName = ALADJumpDemo;
+			productReference = 3D26DF0A1E5D65B500C8EA72 /* ALADJumpDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3D26DF221E5D65B500C8EA72 /* ALADJumpDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D26DF3A1E5D65B500C8EA72 /* Build configuration list for PBXNativeTarget "ALADJumpDemoTests" */;
+			buildPhases = (
+				3D26DF1F1E5D65B500C8EA72 /* Sources */,
+				3D26DF201E5D65B500C8EA72 /* Frameworks */,
+				3D26DF211E5D65B500C8EA72 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D26DF251E5D65B500C8EA72 /* PBXTargetDependency */,
+			);
+			name = ALADJumpDemoTests;
+			productName = ALADJumpDemoTests;
+			productReference = 3D26DF231E5D65B500C8EA72 /* ALADJumpDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3D26DF2D1E5D65B500C8EA72 /* ALADJumpDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D26DF3D1E5D65B500C8EA72 /* Build configuration list for PBXNativeTarget "ALADJumpDemoUITests" */;
+			buildPhases = (
+				3D26DF2A1E5D65B500C8EA72 /* Sources */,
+				3D26DF2B1E5D65B500C8EA72 /* Frameworks */,
+				3D26DF2C1E5D65B500C8EA72 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D26DF301E5D65B500C8EA72 /* PBXTargetDependency */,
+			);
+			name = ALADJumpDemoUITests;
+			productName = ALADJumpDemoUITests;
+			productReference = 3D26DF2E1E5D65B500C8EA72 /* ALADJumpDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D26DF021E5D65B500C8EA72 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = liyongfang;
+				TargetAttributes = {
+					3D26DF091E5D65B500C8EA72 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 9J4Y7YNRRQ;
+						ProvisioningStyle = Automatic;
+					};
+					3D26DF221E5D65B500C8EA72 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3D26DF091E5D65B500C8EA72;
+					};
+					3D26DF2D1E5D65B500C8EA72 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3D26DF091E5D65B500C8EA72;
+					};
+				};
+			};
+			buildConfigurationList = 3D26DF051E5D65B500C8EA72 /* Build configuration list for PBXProject "ALADJumpDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3D26DF011E5D65B500C8EA72;
+			productRefGroup = 3D26DF0B1E5D65B500C8EA72 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D26DF091E5D65B500C8EA72 /* ALADJumpDemo */,
+				3D26DF221E5D65B500C8EA72 /* ALADJumpDemoTests */,
+				3D26DF2D1E5D65B500C8EA72 /* ALADJumpDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D26DF081E5D65B500C8EA72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D26DF1D1E5D65B500C8EA72 /* LaunchScreen.storyboard in Resources */,
+				3D26DF1A1E5D65B500C8EA72 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D26DF211E5D65B500C8EA72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D26DF2C1E5D65B500C8EA72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		314E8E9A8B399CDBD579D696 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ALADJumpDemo/Pods-ALADJumpDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39D0E088ED8C5D410460992E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ALADJumpDemo/Pods-ALADJumpDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4D522A479124FDBEDE53FDC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D26DF061E5D65B500C8EA72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D26DF151E5D65B500C8EA72 /* ViewController.m in Sources */,
+				3D26DF481E5D660400C8EA72 /* ALADJumpManager.m in Sources */,
+				3D26DF121E5D65B500C8EA72 /* AppDelegate.m in Sources */,
+				3D26DF491E5D660400C8EA72 /* ALADJumpView.m in Sources */,
+				3D492C911E60397B0007022A /* ADALCustomerView.m in Sources */,
+				3D26DF0F1E5D65B500C8EA72 /* main.m in Sources */,
+				3D26DF521E5D6DFD00C8EA72 /* ALADJumpConstant.m in Sources */,
+				3D26DF551E5D71FB00C8EA72 /* ADvertisementManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D26DF1F1E5D65B500C8EA72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D26DF281E5D65B500C8EA72 /* ALADJumpDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D26DF2A1E5D65B500C8EA72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D26DF331E5D65B500C8EA72 /* ALADJumpDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D26DF251E5D65B500C8EA72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D26DF091E5D65B500C8EA72 /* ALADJumpDemo */;
+			targetProxy = 3D26DF241E5D65B500C8EA72 /* PBXContainerItemProxy */;
+		};
+		3D26DF301E5D65B500C8EA72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D26DF091E5D65B500C8EA72 /* ALADJumpDemo */;
+			targetProxy = 3D26DF2F1E5D65B500C8EA72 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D26DF1B1E5D65B500C8EA72 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D26DF1C1E5D65B500C8EA72 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D26DF351E5D65B500C8EA72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D26DF361E5D65B500C8EA72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D26DF381E5D65B500C8EA72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 888A067552C979A9D7BD22C6 /* Pods-ALADJumpDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9J4Y7YNRRQ;
+				INFOPLIST_FILE = ALADJumpDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.DoOpen.Cookin.ALADJumpDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3D26DF391E5D65B500C8EA72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D0D5205223BB9E0D66CBA5E /* Pods-ALADJumpDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9J4Y7YNRRQ;
+				INFOPLIST_FILE = ALADJumpDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.DoOpen.Cookin.ALADJumpDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3D26DF3B1E5D65B500C8EA72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ALADJumpDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.DoOpen.Cookin.ALADJumpDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ALADJumpDemo.app/ALADJumpDemo";
+			};
+			name = Debug;
+		};
+		3D26DF3C1E5D65B500C8EA72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ALADJumpDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.DoOpen.Cookin.ALADJumpDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ALADJumpDemo.app/ALADJumpDemo";
+			};
+			name = Release;
+		};
+		3D26DF3E1E5D65B500C8EA72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ALADJumpDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.DoOpen.Cookin.ALADJumpDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ALADJumpDemo;
+			};
+			name = Debug;
+		};
+		3D26DF3F1E5D65B500C8EA72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ALADJumpDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.DoOpen.Cookin.ALADJumpDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ALADJumpDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D26DF051E5D65B500C8EA72 /* Build configuration list for PBXProject "ALADJumpDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D26DF351E5D65B500C8EA72 /* Debug */,
+				3D26DF361E5D65B500C8EA72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D26DF371E5D65B500C8EA72 /* Build configuration list for PBXNativeTarget "ALADJumpDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D26DF381E5D65B500C8EA72 /* Debug */,
+				3D26DF391E5D65B500C8EA72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D26DF3A1E5D65B500C8EA72 /* Build configuration list for PBXNativeTarget "ALADJumpDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D26DF3B1E5D65B500C8EA72 /* Debug */,
+				3D26DF3C1E5D65B500C8EA72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D26DF3D1E5D65B500C8EA72 /* Build configuration list for PBXNativeTarget "ALADJumpDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D26DF3E1E5D65B500C8EA72 /* Debug */,
+				3D26DF3F1E5D65B500C8EA72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D26DF021E5D65B500C8EA72 /* Project object */;
+}

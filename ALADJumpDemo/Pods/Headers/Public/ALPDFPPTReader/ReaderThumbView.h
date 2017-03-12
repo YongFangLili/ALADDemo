@@ -1,0 +1,1 @@
+../../../ALPDFPPTReader/ReaderSources/ReaderThumbView.h

@@ -1,0 +1,21 @@
+# Uncomment this line to define a global platform for your project
+inhibit_all_warnings!
+platform :ios, '7.0'
+workspace 'ALADJumpDemo.xcworkspace'
+source 'git@192.168.1.78:zhangkaichao/ALSpecs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+
+target 'ALADJumpDemo' do
+pod 'ALNetwork', '~> 0.0.7'
+pod 'FMDB', '~> 2.5'
+pod 'YYModel', '~> 0.9.11'
+pod 'Masonry', '~> 0.6.4'
+pod 'MJRefresh', '~> 3.1.0'
+pod 'SDWebImage', '~> 3.8.1'
+pod 'MBProgressHUD', '~> 0.9.2'
+pod 'YYWebImage', '~> 0.9.13'
+pod 'ALPDFPPTReader', '~> 0.2.3'
+pod 'ALStatisticSDK', '~> 0.0.1'
+xcodeproj 'ALADJumpDemo'
+end
