@@ -108,8 +108,6 @@ static id _instance;
 
 -(ALADJumpManager *)adManager{
     
-    __weak typeof(self)weakSelf = self;
-    
     if (!_adManager) {
         
         UIButton *customBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 100, 100)];

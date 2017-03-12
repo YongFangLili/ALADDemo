@@ -14,20 +14,34 @@
 
 @protocol ALADJumpManagerDelegate <NSObject>
 
+
+/**
+ 更新广告数据
+ @param manager manager
+ */
 - (void)ALADJumpUpdateALADData:(ALADJumpManager *)manager;
 
+/**
+ 广告视图即将显示
+ @param manager manager
+ */
 - (void)ALADJumpViewWillApear:(ALADJumpManager *)manager;
 
+/**
+ 广告视图即将消失
+ @param manager manager
+ */
 - (void)ALADJumpViewWillDisapear:(ALADJumpManager *)manager;
 
+/**
+ 广告点击
+ @param linkUrl 点击 url
+ */
 - (void)ALADJumpViewDidClick:(NSString*)linkUrl;
 
 @end
 
-
-
 @interface ALADJumpManager : NSObject
-
 
 
 /**
@@ -35,6 +49,9 @@
  */
 @property (nonatomic, strong) NSDictionary *adParam;
 
+/**
+ delegate
+ */
 @property (nonatomic, weak) id<ALADJumpManagerDelegate>delegate;
 
 

@@ -105,6 +105,12 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
     return self;
 }
 
+
+/**
+ 初始化一个自定义广告视图
+ @param  filePath 文件路径
+ @return adManager
+ */
 - (instancetype)initALADJumpCustomerViewWithFilePath:(NSString *)filePath {
     
     if (self = [super init]) {
