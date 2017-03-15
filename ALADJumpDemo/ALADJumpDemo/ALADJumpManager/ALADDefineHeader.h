@@ -10,7 +10,7 @@
 #define ALADDefineHeader_h
 
 /**默认app至于后台1分钟显示广告*/
-#define kDefaultTimeBackgroud  90.0
+#define kDefaultTimeBackgroud  60.0
 
 //**广告默认持续3s*/
 #define kDefaultTimeContineAd  3

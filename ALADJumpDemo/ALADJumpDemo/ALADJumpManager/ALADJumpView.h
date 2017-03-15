@@ -13,17 +13,23 @@
 @class ALADJumpView;
 @protocol ALADJumpViewDelegate <NSObject>
 /**
- 点击广告图事件
- @param linkUrl 广告模型
+ * @brief 点击广告图事件
+ * @param linkUrl 广告跳转字段
  */
 -(void)adJumpImageViewDidClick:(NSString *)linkUrl;
 
-- (void)ALADJumpViewWillAppear;
+/**
+ * @brief 广告即将显示
+ */
+- (void)adJumpViewWillAppear;
 
-- (void)ALADJumpViewWillDisAppear;
+/**
+ * @brief 广告即消失
+ */
+- (void)adJumpViewWillDisAppear;
 @end
 
-@interface ALADJumpView : UIView
+@interface ALADJumpView : UIWindow
 
 /** ad数据 */
 @property (nonatomic, strong) NSDictionary *adDic;

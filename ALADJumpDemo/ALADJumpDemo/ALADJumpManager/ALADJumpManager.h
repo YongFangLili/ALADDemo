@@ -14,28 +14,27 @@
 
 @protocol ALADJumpManagerDelegate <NSObject>
 
-
 /**
- 更新广告数据
- @param manager manager
+ * @brief 更新广告数据
+ * @param manager manager
  */
 - (void)ALADJumpUpdateALADData:(ALADJumpManager *)manager;
 
 /**
- 广告视图即将显示
- @param manager manager
+ * @brief 广告视图即将显示
+ * @param manager manager
  */
 - (void)ALADJumpViewWillApear:(ALADJumpManager *)manager;
 
 /**
- 广告视图即将消失
- @param manager manager
+ * brief 广告视图即将消失
+ * @param manager manager
  */
 - (void)ALADJumpViewWillDisapear:(ALADJumpManager *)manager;
 
 /**
- 广告点击
- @param linkUrl 点击 url
+ * @brief 广告点击
+ * @param linkUrl 点击 url
  */
 - (void)ALADJumpViewDidClick:(NSString*)linkUrl;
 
@@ -43,25 +42,18 @@
 
 @interface ALADJumpManager : NSObject
 
-
-/**
- 广告所需传入的参数
- */
+/** 广告所需传入的参数 */
 @property (nonatomic, strong) NSDictionary *adParam;
 
-/**
- delegate
- */
+/** delegate */
 @property (nonatomic, weak) id<ALADJumpManagerDelegate>delegate;
 
-
 /**
- 创建广告Manager
-
- @param filePath               文件路径
- @param appType                app类型
- @param customeButton          自定义Button
- @return adManager
+ * @brief   创建广告Manager
+ * @param   filePath          文件路径
+ * @param   appType           app类型
+ * @param   customeButton     自定义Button
+ * @return  adManager
  */
 - (instancetype)initALADJumpManagerWithFilePath : (NSString *)filePath
                                  andWithAPPType : (ALADJumpAppType)appType
@@ -75,8 +67,8 @@
 - (instancetype)initALADJumpCustomerViewWithFilePath:(NSString *)filePath;
 
 /**
- 添加广告视图
- @param isShow 是否在当前界面显示广告
+ * @brief 添加广告视图
+ * @param isShow 是否在当前界面显示广告
  */
 - (void)showADJumpViewWithIsShow:(BOOL)isShow;
 
@@ -86,30 +78,30 @@
 - (UIImage *)getADImageData;
 
 /**
- 从沙盒中获取广告数据模型
- @return ALADModel 广告数据模型
+ * @brief 从沙盒中获取广告数据模型
+ * @return ALADModel 广告数据模型
  */
 - (NSDictionary *)getADData;
 
 
 /**
- 保存广告数据
- @param dic 数据字典
+ * @brief 保存广告数据
+ * @param dic 数据字典
  */
 - (void)saveAdDataWithData:(NSDictionary *)dic;
 
 /**
- 检查是否存在广告视图
- @return YES/NO
+ * @brief 检查是否存在广告视图
+ * @return YES/NO
  */
 + (BOOL)checkIsExistAdJumpView;
 
 
 /**
- 操作广告视图
- @param isBringToFront 是否置于window前
- @param isRemove       是否移除广告
- 注意：二者操作取反
+ * @brief 操作广告视图
+ * @param isBringToFront 是否置于window前
+ * @param isRemove       是否移除广告
+ * 注意：二者操作取反
  */
 + (void)handleAdJumpViewWithBringToFront:(BOOL)isBringToFront orRemove:(BOOL)isRemove;
 

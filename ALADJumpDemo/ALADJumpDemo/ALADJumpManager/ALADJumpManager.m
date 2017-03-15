@@ -34,23 +34,11 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 /**是否从后台进入*/
 @property (nonatomic, assign) BOOL isBackgroundIn;
 
-/**更新广告位数据   网络请求*/
-@property (nonatomic, copy) void(^updateAdDataBlock)();
-
-/**广告跳转事件 */
-@property (nonatomic, copy) void (^handleAdJumBlock)(NSString *linkUrl);
-
-/** 创建浏览日志操作 */
-@property (nonatomic, copy) void (^createBroawseLogBlock)(NSDate *date);
-
 /**是否有其他界面不显示广告*/
 @property (nonatomic, assign) BOOL ishasViewsNotShowAd;
 
 /** 自定义Button */
 @property (nonatomic, strong) UIButton *customerButton;
-
-
-
 
 @end
 
@@ -77,19 +65,14 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
             [adJumpView showAD];
         }
     }
-    //3. 更新广告位数据
-    if (self.updateAdDataBlock) {
-        self.updateAdDataBlock();
-    }
 }
 
-
 /**
- 创建广告Manager
- @param filePath               文件路径
- @param appType                app类型
- @param customeButton          自定义Button
- @return adManager
+ * @brief   创建广告Manager
+ * @param   filePath          文件路径
+ * @param   appType           app类型
+ * @param   customeButton     自定义Button
+ * @return  adManager
  */
 - (instancetype)initALADJumpManagerWithFilePath : (NSString *)filePath
                                  andWithAPPType : (ALADJumpAppType)appType
@@ -107,9 +90,9 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 
 
 /**
- 初始化一个自定义广告视图
- @param  filePath 文件路径
- @return adManager
+ * @brief  初始化一个自定义广告视图
+ * @param  filePath 文件路径
+ * @return adManager
  */
 - (instancetype)initALADJumpCustomerViewWithFilePath:(NSString *)filePath {
     
@@ -120,7 +103,7 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 }
 
 /**
- 添加app进入后台通知
+ * @brief 添加app进入后台通知
  */
 - (void)addNotice {
     
@@ -133,8 +116,8 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 }
 
 /**
- 进入后台保存时间
- @param notice 通知
+ * @brief 进入后台保存时间
+ * @param notice 通知
  */
 - (void)appDidEnterBackground:(NSNotification *)notice {
     
@@ -143,7 +126,7 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 }
 
 /**
- 保存广告
+ * @brief 保存广告
  */
 -(void)saveInBackgroundTime {
     // 记录当前的时间
@@ -152,8 +135,8 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 
 
 /**
- 图片下载
- @param dic 广告模型
+ * @brief图片下载
+ * @param dic 广告模型
  */
 - (void)downloadADImageWithDataDic:(NSDictionary *)dic {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -169,8 +152,9 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
     });
     
 }
+
 /**
- *  判断该路径是否存在文件
+ *  @brief  判断该路径是否存在文件
  *  @param  filePath 路径
  *  @return BOOL
  */
@@ -184,8 +168,8 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 
 
 /**
- *  获取缓存路径
- *  @return 返回缓存路径
+ * @brief 获取缓存路径
+ * @return 返回缓存路径
  */
 - (NSString*)getFilePath:(NSString *)fileName {
 
@@ -201,8 +185,8 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 
 
 /**
- 归档方法获取model
- @param dic 保存基本信息
+ * @brief 归档方法获取model
+ * @param dic 保存基本信息
  */
 - (void)saveAdDataWithData:(NSDictionary *)dic {
     
@@ -214,8 +198,8 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 }
 
 /**
- 从沙盒中获取广告数据模型
- @return ALADModel 广告数据模型
+ * @brief  从沙盒中获取广告基本信息
+ * @return Dic
  */
 - (NSDictionary *)getADData{
     
@@ -225,18 +209,31 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 
 
 /**
- * @brief 获取图片image.
+ * @brief  获取图片image.
+ * @return imageData
  */
 - (UIImage *)getADImageData {
     return [UIImage imageWithContentsOfFile:[self getFilePath:kAdImageDataName]];
 }
 
+/**
+ * @brief 处理广告数据
+ * @param dic 网络请求得到的新model
+ */
+- (void)handleDataWithDic:(NSDictionary *)dic {
+    
+    //    // 图片不一样重新下载图片
+    //    if (dic[kALADJumpLinkUrlKey] == nil || ![[self.oldDataDic objectForKey:kALADJumpImageUrlKey] isEqualToString:self.adModel.adImageUrl]) {
+    // 异步下载图片
+    [self downloadADImageWithDataDic:dic];
+    //    }
+}
 
 /**
- 是否需要显示广告
- 1、如果是启动app 需要显示广告
- 2、至于后台后重启的时间是否达到了规定的时间
- @return YES/NO
+ * @brief 是否需要显示广告
+ * 1、如果是启动app 需要显示广告
+ * 2、至于后台后重启的时间是否达到了规定的时间
+ * @return YES/NO
  */
 - (BOOL)isShowADView {
     
@@ -255,8 +252,8 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 }
 
 /**
- 检查是否存在广告视图
- @return YES/NO
+ * @brief 检查是否存在广告视图
+ * @return YES/NO
  */
 + (BOOL)checkIsExistAdJumpView {
     
@@ -271,9 +268,9 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 }
 
 /**
- 操作广告视图
- @param isBringToFront 是否置于window前
- @param isRemove       是否移除广告
+ * @brief 操作广告视图
+ * @param isBringToFront 是否置于window前
+ * @param isRemove       是否移除广告
  注意：二者操作取反
  */
 + (void)handleAdJumpViewWithBringToFront:(BOOL)isBringToFront orRemove:(BOOL)isRemove {
@@ -294,13 +291,20 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 }
 
 #pragma mark -delegate
-// ALADJumpAppType 跳转
+/**
+ * @brief ALADJumpAppType 跳转
+ * @param linkUrl 跳转url
+ */
 -(void)adJumpImageViewDidClick:(NSString *)linkUrl {
     //执行跳转 Block
     if (self.delegate && [self.delegate respondsToSelector:@selector(ALADJumpViewDidClick:)]) {
         [self.delegate ALADJumpViewDidClick:linkUrl];
     }
 }
+
+/**
+ * @brief 广告视图将要出现
+ */
 - (void)ALADJumpViewWillAppear {
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(ALADJumpViewWillApear:)]) {
@@ -308,6 +312,9 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
     }
 }
 
+/**
+ * @brief 广告视图将要消失
+ */
 - (void)ALADJumpViewWillDisAppear {
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(ALADJumpViewWillDisapear:)]) {
@@ -316,20 +323,6 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 
 }
 
-
-
-/**
- 处理广告数据
- @param dic 网络请求得到的新model
- */
-- (void)handleDataWithDic:(NSDictionary *)dic {
-
-//    // 图片不一样重新下载图片
-//    if (dic[kALADJumpLinkUrlKey] == nil || ![[self.oldDataDic objectForKey:kALADJumpImageUrlKey] isEqualToString:self.adModel.adImageUrl]) {
-        // 异步下载图片
-        [self downloadADImageWithDataDic:dic];
-//    }
-}
 
 #pragma mark -lazy  get set方法
 -(void)setAdParam:(NSDictionary *)adParam {

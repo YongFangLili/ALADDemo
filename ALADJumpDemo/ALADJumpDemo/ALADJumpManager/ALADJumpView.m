@@ -28,6 +28,9 @@
 /** 自定义视图 */
 @property (nonatomic, assign) ALADJumpView *adCustomerView;
 
+/** 认证弹框 */
+@property (nonatomic, strong) UIAlertView *alertView;
+
 @end
 
 @implementation ALADJumpView
@@ -38,13 +41,13 @@
                  withCustomerButton: (UIButton *)customerButton {
 
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor redColor];
+        // 设置window的优先级
+        self.windowLevel = UIWindowLevelAlert + UIWindowLevelAlert;
         _adDic = dataDic;
         if (customerButton) {
             _customerButton = customerButton;
         }else{
-            
-            
         }
         [self setUpUIWithAppType:appType];
     }
@@ -52,9 +55,10 @@
 }
 
 
+
 /**
- 创建 UI
- @param appType APP类型
+ * @brief 创建 UI
+ * @param appType APP类型
  */
 - (void)setUpUIWithAppType:(ALADJumpAppType)appType{
     
@@ -63,24 +67,32 @@
     self.adImageView.frame = CGRectMake(0, 0, PHONE_WIDTH, PHONE_HEIGH);
     [self addSubview:self.timerButton];
     [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",[self.adDic[kALADJumpContinueTimeKey] integerValue]] forState:UIControlStateNormal];
+    [self makeKeyAndVisible];
 }
 
-// 显示广告到window上
+/**
+ * @brief 显示广告到window上
+ */
 - (void)showAD {
     
-    UIWindow * window = [[UIApplication sharedApplication].windows firstObject];
-    [window addSubview:self];
-    [window bringSubviewToFront:self];
+//    UIWindow * window = [[UIApplication sharedApplication].windows firstObject];
+//    [window addSubview:self];
+//    [window bringSubviewToFront:self];
+//    UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    window.windowLevel =  UIWindowLevelAlert;
+//    [window addSubview:self];
     self.adImageView.image = [UIImage imageWithContentsOfFile:self.filePath];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(ALADJumpViewWillAppear)]) {
-        [self.delegate ALADJumpViewWillAppear];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(adJumpViewWillAppear)]) {
+        [self.delegate adJumpViewWillAppear];
     }
 
     // 开始倒计时
     [self startTimer];
 }
 
-// 广告跳转
+/**
+ * @brief 广告跳转
+ */
 - (void)handleJumpUrl {
     
     if (self.adDic[kALADJumpLinkUrlKey] == nil) {
@@ -94,7 +106,7 @@
 
 
 /**
- @brief 开启定时器
+ * @brief 开启定时器
  */
 - (void)startTimer {
     
@@ -105,13 +117,16 @@
 }
 
 /**
- *  @brief 定时器响应.
+ * @brief 定时器响应.
  */
 - (void)countDownEventHandle {
     
     self.count--;
     if (_count > 0) {
         [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",(long)_count] forState:UIControlStateNormal];
+    }
+    if (_count == 5) {
+        [self showAlertView];
     }
     
     if (_count == 0) {
@@ -134,7 +149,9 @@
     } completion:^(BOOL finished) {
         
         [self removeFromSuperview];
-        [self.delegate ALADJumpViewWillDisAppear];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(adJumpViewWillDisAppear)]) {
+            [self.delegate adJumpViewWillDisAppear];
+        }
         
     }];
 }
@@ -160,7 +177,7 @@
     
     if (!_adImageView) {
         _adImageView = [[UIImageView alloc] init];
-        _adImageView.backgroundColor = [UIColor whiteColor];
+        _adImageView.backgroundColor = [UIColor greenColor];
         _adImageView.contentMode = UIViewContentModeScaleAspectFit;
         _adImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *clickTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleJumpUrl)];
@@ -195,6 +212,16 @@
     [self.countTimer invalidate];
     self.countTimer = nil;
     NSLog(@"父类广告viewdellog了");
+}
+
+
+/**
+ * @brief 显示弹框.
+ */
+- (void)showAlertView {
+    
+    _alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"完成认证，即可观看完整内容。" delegate:self cancelButtonTitle:@"立即认证" otherButtonTitles:@"稍后认证", nil];
+    [_alertView show];
 }
 
 @end
