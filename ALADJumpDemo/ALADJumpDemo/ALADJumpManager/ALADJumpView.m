@@ -64,7 +64,7 @@
     
     [self addSubview:self.adImageView];
     // imageView
-    self.adImageView.frame = CGRectMake(0, 0, PHONE_WIDTH, PHONE_HEIGH);
+    self.adImageView.frame = CGRectMake(0, 0, kPHONE_WIDTH, kPHONE_HEIGH);
     [self addSubview:self.timerButton];
     [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",[self.adDic[kALADJumpContinueTimeKey] integerValue]] forState:UIControlStateNormal];
     [self makeKeyAndVisible];
@@ -196,10 +196,10 @@
             _timerButton = [[UIButton alloc] init];
              _timerButton.layer.cornerRadius = 2.0;
             _timerButton.layer.masksToBounds = YES;
-            [_timerButton setTitleColor:RGBACOLOR(98, 111, 140, 1) forState:UIControlStateNormal];
-            [_timerButton setBackgroundColor:RGBACOLOR(240, 245, 248, 0.7)];
+            [_timerButton setTitleColor:kRGBACOLOR(98, 111, 140, 1) forState:UIControlStateNormal];
+            [_timerButton setBackgroundColor:kRGBACOLOR(240, 245, 248, 0.7)];
             CGSize buttonSize = CGSizeMake( 55.0 * kScreenScaleWidth, 25 * kScreenScaleHeight);
-            _timerButton.frame = CGRectMake(PHONE_WIDTH-buttonSize.width -17 * kScreenScaleWidth, 22 * kScreenScaleHeight, buttonSize.width, buttonSize.height);
+            _timerButton.frame = CGRectMake(kPHONE_WIDTH-buttonSize.width -17 * kScreenScaleWidth, 22 * kScreenScaleHeight, buttonSize.width, buttonSize.height);
             [_timerButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
         }
         [_timerButton addTarget:self action:@selector(dismissAD) forControlEvents:UIControlEventTouchUpInside];

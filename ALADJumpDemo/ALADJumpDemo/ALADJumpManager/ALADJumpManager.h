@@ -40,6 +40,9 @@
 
 @end
 
+
+
+
 @interface ALADJumpManager : NSObject
 
 /** 广告所需传入的参数 */
@@ -83,7 +86,6 @@
  */
 - (NSDictionary *)getADData;
 
-
 /**
  * @brief 保存广告数据
  * @param dic 数据字典
@@ -91,11 +93,15 @@
 - (void)saveAdDataWithData:(NSDictionary *)dic;
 
 /**
+ * @brief 删除imageData
+ */
+- (void)deleteOldImageData;
+
+/**
  * @brief 检查是否存在广告视图
  * @return YES/NO
  */
 + (BOOL)checkIsExistAdJumpView;
-
 
 /**
  * @brief 操作广告视图
@@ -104,7 +110,5 @@
  * 注意：二者操作取反
  */
 + (void)handleAdJumpViewWithBringToFront:(BOOL)isBringToFront orRemove:(BOOL)isRemove;
-
-
 
 @end

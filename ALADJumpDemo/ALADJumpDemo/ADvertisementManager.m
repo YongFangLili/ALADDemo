@@ -18,6 +18,8 @@
 
 
 + (void)showAD {
+    
+//    [ADvertisementManager sharedADManager].adManager = nil;
     [[ADvertisementManager sharedADManager].adManager showADJumpViewWithIsShow:YES];
 }
 
@@ -56,14 +58,9 @@ static id _instance;
     self.adManager.adParam = adDic;
 }
 
-
-
-
 /**
  *  是否所有的界面显示AD
- *
  *  @return YES / NO
- *
  */
 - (BOOL)isAllViewShowAD{
     
@@ -99,6 +96,7 @@ static id _instance;
 -(void)ALADJumpViewWillDisapear:(ALADJumpManager *)manager {
     
     [self createBraouseLogRequestWithDate:[NSDate date]];
+    self.adManager = nil;
     
 }
 
@@ -112,20 +110,10 @@ static id _instance;
         
         UIButton *customBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 20, 100, 100)];
         customBtn.backgroundColor = [UIColor cyanColor];
-        _adManager = [[ALADJumpManager alloc] initALADJumpManagerWithFilePath:kadImagePath
-                                                    andWithAPPType: eALADMedPlus
-                                                withCustomerButton: nil
-                                                 ];
+        _adManager = [[ALADJumpManager alloc] initALADJumpManagerWithFilePath:kadImagePath andWithAPPType: eALADMedPlus withCustomerButton: customBtn];
         _adManager.delegate = self;
     }
     return _adManager;
 }
-
-
-
-
-
-
-
 
 @end

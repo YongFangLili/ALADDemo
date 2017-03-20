@@ -10,32 +10,28 @@
 #import "ALADJumpView.h"
 #import "ALADDefineHeader.h"
 
-
-// 进入后台时的时间
+/** 进入后台时的时间 */
 static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgroud";
 
 @interface ALADJumpManager()<ALADJumpViewDelegate>
 
-/**上一次保存的模型数据*/
+/** 上一次保存的模型数据 */
 @property (nonatomic, strong) NSDictionary *oldDataDic;
 
-/**广告模型*/
+/** 广告模型 */
 @property (nonatomic, assign) ALADJumpAppType appType;
 
-/**文件路径*/
+/** 文件路径 */
 @property (nonatomic, copy) NSString *filePath;
 
-/**自定义广告视图*/
+/** 自定义广告视图 */
 @property (nonatomic, strong) ALADJumpView *adCustomSubview;
 
-/**自定义广告视图*/
+/** 自定义广告视图 */
 @property (nonatomic, copy) BOOL(^isAllViewShowAdBlock) ();
 
-/**是否从后台进入*/
+/** 是否从后台进入 */
 @property (nonatomic, assign) BOOL isBackgroundIn;
-
-/**是否有其他界面不显示广告*/
-@property (nonatomic, assign) BOOL ishasViewsNotShowAd;
 
 /** 自定义Button */
 @property (nonatomic, strong) UIButton *customerButton;
@@ -52,6 +48,11 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
     
     // 视图能在view上显示    至于后台时间没有超时  并且后台允许显示广告
     self.oldDataDic = [self getADData];
+    if (self.oldDataDic[kALADJumpIsShowKey]) { // 如果不显示广告
+        // 移除数据
+        [self deleteOldImageData];
+        
+    }
     if (isShow && [self isShowADView] && self.oldDataDic[kALADJumpIsShowKey]) {
         // 删除之前后台存储的时间
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSaveTimeWhenEnterBackgroud];
@@ -59,11 +60,27 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
         if (self.oldDataDic[kALADJumpImageUrlKey] != nil) {
             // 显示广告图片
             NSString *imagefilePath = [self getFilePath:kAdImageDataName];
-            ALADJumpView *adJumpView = [[ALADJumpView alloc] initAdJumpViewFrame:CGRectMake(0, 0,PHONE_WIDTH , PHONE_HEIGH) andWithAppType:self.appType  withDataDic:self.oldDataDic withCustomerButton:self.customerButton ];
+            ALADJumpView *adJumpView = [[ALADJumpView alloc] initAdJumpViewFrame:CGRectMake(0, 0,kPHONE_WIDTH , kPHONE_HEIGH) andWithAppType:self.appType  withDataDic:self.oldDataDic withCustomerButton:self.customerButton ];
             adJumpView.filePath = imagefilePath;
             adJumpView.delegate = self;
             [adJumpView showAD];
         }
+    }
+}
+/**
+ *  @brief 删除广告信息数据
+ */
+- (void)deleteOldImageData {
+    
+    NSString * adInfoFilePath = [self getFilePath:kAdInfoDataName];
+    NSString *adImageDataFilePath = [self getFilePath:kAdImageDataName];
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    if ([self isFileExistWithFilePath:adInfoFilePath]) {
+        [fileManager removeItemAtPath:adInfoFilePath error:nil];
+    }
+    if ([self isFileExistWithFilePath:adImageDataFilePath]) {
+        [fileManager removeItemAtPath:adImageDataFilePath error:nil];
+        
     }
 }
 
@@ -141,7 +158,7 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 - (void)downloadADImageWithDataDic:(NSDictionary *)dic {
     dispatch_async(dispatch_get_main_queue(), ^{
         //TODO 异步操作
-        //1、下载数据
+        //下载数据
         NSError *error = nil;
         NSData *data= [NSData dataWithContentsOfURL:[NSURL URLWithString:dic[kALADJumpImageUrlKey]] options:NSDataReadingUncached error:&error];
         UIImage * image = [UIImage imageWithData:data];
@@ -305,7 +322,7 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 /**
  * @brief 广告视图将要出现
  */
-- (void)ALADJumpViewWillAppear {
+- (void)adJumpViewWillAppear {
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(ALADJumpViewWillApear:)]) {
         [self.delegate ALADJumpViewWillApear:self];
@@ -315,7 +332,7 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 /**
  * @brief 广告视图将要消失
  */
-- (void)ALADJumpViewWillDisAppear {
+- (void)adJumpViewWillDisAppear {
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(ALADJumpViewWillDisapear:)]) {
         [self.delegate ALADJumpViewWillDisapear:self];
@@ -338,6 +355,7 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:UIApplicationDidEnterBackgroundNotification];
+    NSLog(@"移除了manager");
 }
 
 @end

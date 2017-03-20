@@ -17,8 +17,8 @@
 #define kUserDefault [NSUserDefaults standardUserDefaults]
 #define kCachPath    [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)\
 objectAtIndex:0]
-#define PHONE_WIDTH  [[UIScreen mainScreen] bounds].size.width
-#define PHONE_HEIGH  ([UIApplication sharedApplication].statusBarFrame.size.height > 20 ? \
+#define kPHONE_WIDTH  [[UIScreen mainScreen] bounds].size.width
+#define kPHONE_HEIGH  ([UIApplication sharedApplication].statusBarFrame.size.height > 20 ? \
 (([[UIScreen mainScreen] bounds].size.height - [UIApplication sharedApplication].statusBarFrame.size.height + 20)) : \
 [[UIScreen mainScreen] bounds].size.height)
 
@@ -28,15 +28,10 @@ objectAtIndex:0]
 #define kAdImageDataName @"adImageDataName"
 /*** 保存广告基本信息文件名 */
 #define kAdInfoDataName  @"adInfoDataName"
-
-/// RGB颜色.
-#define RGBACOLOR(R,G,B,a) [UIColor colorWithRed:(R)/255.0f green:(G)/255.0f blue:(B)/255.0f alpha:(a)]
+/*** RGB颜色 */
+#define kRGBACOLOR(R,G,B,a) [UIColor colorWithRed:(R)/255.0f green:(G)/255.0f blue:(B)/255.0f alpha:(a)]
 #define kScreenScaleWidth   [UIScreen mainScreen].bounds.size.width/375.0
 #define kScreenScaleHeight  ([UIScreen mainScreen].bounds.size.height/667.0==1 ? \
 1:[UIScreen mainScreen].bounds.size.height/667.0)
-#define PHONE_WIDTH  [[UIScreen mainScreen] bounds].size.width
-#define PHONE_HEIGH  ([UIApplication sharedApplication].statusBarFrame.size.height > 20 ? \
-(([[UIScreen mainScreen] bounds].size.height - [UIApplication sharedApplication].statusBarFrame.size.height + 20)) : \
-[[UIScreen mainScreen] bounds].size.height)
 
 #endif /* ALADDefineHeader_h */
