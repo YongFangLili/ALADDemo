@@ -20,7 +20,7 @@
  */
 + (instancetype)sharedADManager;
 
-+ (void)showAD;
+-(void)showAD;
 
 
 

@@ -82,6 +82,8 @@ static id _instance;
  */
 - (void)handleJumpUrl{
     
+    
+    
     NSLog(@"跳转");
 }
 
@@ -101,6 +103,8 @@ static id _instance;
 }
 
 -(void)ALADJumpViewDidClick:(NSString *)linkUrl {
+    
+    
 
 }
 
