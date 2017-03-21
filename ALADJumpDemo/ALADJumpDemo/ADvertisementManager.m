@@ -81,9 +81,6 @@ static id _instance;
  *  点击广告跳转
  */
 - (void)handleJumpUrl{
-    
-    
-    
     NSLog(@"跳转");
 }
 
@@ -104,8 +101,6 @@ static id _instance;
 
 -(void)ALADJumpViewDidClick:(NSString *)linkUrl {
     
-    
-
 }
 
 -(ALADJumpManager *)adManager{
