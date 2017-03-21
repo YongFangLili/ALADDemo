@@ -9,7 +9,8 @@
 
 #import "ADALCustomerView.h"
 #import "ALADJumpHeader.h"
-#import "ALADJumpConstant.h"
+/** 图片目录 */
+#define kadImagePath [kCachPath stringByAppendingPathComponent:@"AD"]
 
 static NSInteger  const adTime = 3;
 static CGFloat const btnWidth = 60.0f;
@@ -17,7 +18,7 @@ static  CGFloat const btnHeight = 30.0f;
 
 @interface ADALCustomerView()
 
-///广告图片.
+/** 广告图片 */
 @property (nonatomic,strong) UIImageView * imgVAD;
 ///广告下部唯医图片.
 @property (nonatomic,strong) UIImageView * imgVBack;
@@ -53,8 +54,8 @@ static  CGFloat const btnHeight = 30.0f;
 
 - (BOOL)isShowAd {
     
-    NSDictionary *dic = [self.adManager getADData];
-    UIImage *adImage = [self.adManager getADImageData];
+    NSDictionary *dic = [self.adManager getADInfoDataWithFilePath:kadImagePath];
+    UIImage *adImage = [self.adManager getADImageDataWithFilePath:kadImagePath];
     if (dic[kALADJumpIsShowKey] && dic[kALADJumpImageUrlKey] && adImage) {
         self.imgVAD.image = adImage;
         return YES;
@@ -78,7 +79,7 @@ static  CGFloat const btnHeight = 30.0f;
     [adDic setValue:@(appInBackgroundTime) forKey:kALADAppInBackgroundTimeKey];
     [adDic setObject:@(YES) forKey:kALADJumpIsShowKey];
     // 存储广告
-    [self.adManager saveAdDataWithData:adDic];
+    self.adManager.adParam = adDic;
 }
 
 - (void) startTimer
@@ -160,10 +161,6 @@ static  CGFloat const btnHeight = 30.0f;
     } completion:^(BOOL finished) {
         
         [self removeFromSuperview];
-        
-        if (self.removeADViewManagerBlock) {
-            self.removeADViewManagerBlock();
-        }
     }];
 }
 

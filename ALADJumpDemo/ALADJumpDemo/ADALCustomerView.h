@@ -11,6 +11,4 @@
 @interface ADALCustomerView : UIView
 
 - (void)showAD;
-
-@property (nonatomic, copy) void(^removeADViewManagerBlock)();
 @end

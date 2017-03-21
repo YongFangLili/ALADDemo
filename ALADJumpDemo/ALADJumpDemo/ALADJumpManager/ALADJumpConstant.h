@@ -19,6 +19,10 @@ extern NSString * const kALADJumpContinueTimeKey;
 extern NSString * const kALADAppInBackgroundTimeKey;
 /** 是否显示广告key*/
 extern NSString * const kALADJumpIsShowKey;
+/*** 保存广告图片文件名 */
+extern NSString * const kAdImageDataName;
+/*** 保存广告基本信息文件名 */
+extern NSString * const kAdInfoDataName;
 
 
 #endif /* ALADJumpConstant_h */

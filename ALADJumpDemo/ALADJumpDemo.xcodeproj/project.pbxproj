@@ -129,14 +129,14 @@
 				3D26DF111E5D65B500C8EA72 /* AppDelegate.m */,
 				3D26DF131E5D65B500C8EA72 /* ViewController.h */,
 				3D26DF141E5D65B500C8EA72 /* ViewController.m */,
-				3D26DF191E5D65B500C8EA72 /* Assets.xcassets */,
-				3D26DF1B1E5D65B500C8EA72 /* LaunchScreen.storyboard */,
-				3D26DF1E1E5D65B500C8EA72 /* Info.plist */,
-				3D26DF0D1E5D65B500C8EA72 /* Supporting Files */,
 				3D26DF531E5D71FB00C8EA72 /* ADvertisementManager.h */,
 				3D26DF541E5D71FB00C8EA72 /* ADvertisementManager.m */,
 				3D492C8F1E60397B0007022A /* ADALCustomerView.h */,
 				3D492C901E60397B0007022A /* ADALCustomerView.m */,
+				3D26DF191E5D65B500C8EA72 /* Assets.xcassets */,
+				3D26DF1B1E5D65B500C8EA72 /* LaunchScreen.storyboard */,
+				3D26DF1E1E5D65B500C8EA72 /* Info.plist */,
+				3D26DF0D1E5D65B500C8EA72 /* Supporting Files */,
 			);
 			path = ALADJumpDemo;
 			sourceTree = "<group>";
