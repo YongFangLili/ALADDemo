@@ -69,9 +69,6 @@
     
     if (!_adCustomeView) {
         _adCustomeView = [[ADALCustomerView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-        [_adCustomeView setRemoveADViewManagerBlock:^{
-            _adCustomeView = nil;
-        }];
     }
     return _adCustomeView;
 }

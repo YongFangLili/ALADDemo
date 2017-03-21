@@ -17,7 +17,6 @@ static CGFloat const btnWidth = 60.0f;
 static  CGFloat const btnHeight = 30.0f;
 
 @interface ADALCustomerView()
-
 /** 广告图片 */
 @property (nonatomic,strong) UIImageView * imgVAD;
 ///广告下部唯医图片.
