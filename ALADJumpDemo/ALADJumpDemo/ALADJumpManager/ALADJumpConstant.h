@@ -15,10 +15,14 @@ extern NSString * const kALADJumpImageUrlKey;
 extern NSString * const kALADJumpLinkUrlKey;
 /** 广告持续时间key*/
 extern NSString * const kALADJumpContinueTimeKey;
-/** APP至于后台多长时间显示key*/
+/** APP置于后台多长时间显示key*/
 extern NSString * const kALADAppInBackgroundTimeKey;
-/** 是否显示广告key*/
+/** 是否显示广告*/
 extern NSString * const kALADJumpIsShowKey;
+/*** 保存广告图片文件名 */
+extern NSString * const kAdImageDataName;
+/*** 保存广告基本信息文件名 */
+extern NSString * const kAdInfoDataName;
 
 
 #endif /* ALADJumpConstant_h */

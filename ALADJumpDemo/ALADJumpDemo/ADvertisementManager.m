@@ -9,23 +9,23 @@
 
 #import "ADvertisementManager.h"
 #import "ALADDefineHeader.h"
+/** 图片目录 */
+#define kadImagePath [kCachPath stringByAppendingPathComponent:@"AD"]
 
 @interface ADvertisementManager()<ALADJumpManagerDelegate>
-
 @end
 
 @implementation ADvertisementManager
 
-
+/**
+ * @brief 显示广告
+ */
 + (void)showAD {
     
-//    [ADvertisementManager sharedADManager].adManager = nil;
     [[ADvertisementManager sharedADManager].adManager showADJumpViewWithIsShow:YES];
 }
 
-/**
- *  单例
- */
+/** 单例 */
 static id _instance;
 + (instancetype)sharedADManager {
     
@@ -38,7 +38,7 @@ static id _instance;
 
 
 /**
- *  网络请求
+ * @brief 网络请求
  */
 - (void)adRequest {
     
@@ -59,8 +59,8 @@ static id _instance;
 }
 
 /**
- *  是否所有的界面显示AD
- *  @return YES / NO
+ * @brief  是否所有的界面显示AD
+ * @return YES / NO
  */
 - (BOOL)isAllViewShowAD{
     
@@ -69,7 +69,7 @@ static id _instance;
 
 
 /**
- *  创建浏览日志
+ * @brief 创建浏览日志
  */
 - (void)createBraouseLogRequestWithDate:(NSDate *)date{
     
@@ -78,13 +78,17 @@ static id _instance;
 
 
 /**
- *  点击广告跳转
+ * @brief 点击广告跳转
  */
 - (void)handleJumpUrl{
     NSLog(@"跳转");
 }
 
 #pragma mark -ALADJumpManagerDelegate
+
+-(void)ALADJumpUpdateALADData:(ALADJumpManager *)manager {
+    [self adRequest];
+}
 
 - (void)ALADJumpViewWillApear:(ALADJumpManager *)manager {
     
@@ -100,9 +104,11 @@ static id _instance;
 }
 
 -(void)ALADJumpViewDidClick:(NSString *)linkUrl {
-    
+
+    [self handleJumpUrl];
 }
 
+#pragma mark-lazy
 -(ALADJumpManager *)adManager{
     
     if (!_adManager) {

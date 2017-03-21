@@ -10,9 +10,7 @@
 #import "ALADJumpManager.h"
 #import "ALADDefineHeader.h"
 
-
 @interface ALADJumpView()
-
 /** 广告图片 */
 @property (nonatomic, strong) UIImageView *adImageView;
 
@@ -25,11 +23,10 @@
 /** 自定义button */
 @property (nonatomic, strong) UIButton * customerButton;
 
-/** 自定义视图 */
-@property (nonatomic, assign) ALADJumpView *adCustomerView;
-
 /** 认证弹框 */
 @property (nonatomic, strong) UIAlertView *alertView;
+
+
 
 @end
 
@@ -41,7 +38,7 @@
                  withCustomerButton: (UIButton *)customerButton {
 
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor whiteColor];
         // 设置window的优先级
         self.windowLevel = UIWindowLevelAlert + UIWindowLevelAlert;
         _adDic = dataDic;
@@ -54,19 +51,17 @@
     return self;
 }
 
-
-
 /**
  * @brief 创建 UI
  * @param appType APP类型
  */
-- (void)setUpUIWithAppType:(ALADJumpAppType)appType{
+- (void)setUpUIWithAppType:(ALADJumpAppType)appType {
     
     [self addSubview:self.adImageView];
     // imageView
     self.adImageView.frame = CGRectMake(0, 0, kPHONE_WIDTH, kPHONE_HEIGH);
     [self addSubview:self.timerButton];
-    [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",[self.adDic[kALADJumpContinueTimeKey] integerValue]] forState:UIControlStateNormal];
+    [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",[[self.adDic objectForKey:kALADJumpContinueTimeKey] integerValue]] forState:UIControlStateNormal];
     [self makeKeyAndVisible];
 }
 
@@ -75,17 +70,10 @@
  */
 - (void)showAD {
     
-//    UIWindow * window = [[UIApplication sharedApplication].windows firstObject];
-//    [window addSubview:self];
-//    [window bringSubviewToFront:self];
-//    UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    window.windowLevel =  UIWindowLevelAlert;
-//    [window addSubview:self];
     self.adImageView.image = [UIImage imageWithContentsOfFile:self.filePath];
     if (self.delegate && [self.delegate respondsToSelector:@selector(adJumpViewWillAppear)]) {
         [self.delegate adJumpViewWillAppear];
     }
-
     // 开始倒计时
     [self startTimer];
 }
@@ -103,7 +91,6 @@
     }
     [self dismissAD];
 }
-
 
 /**
  * @brief 开启定时器
@@ -125,12 +112,12 @@
     if (_count > 0) {
         [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",(long)_count] forState:UIControlStateNormal];
     }
-    if (_count == 5) {
-        [self showAlertView];
-    }
-    
     if (_count == 0) {
         [self dismissAD];
+    }
+    
+    if (_count == 2) {
+        [self showAlertView];
     }
 }
 
@@ -152,19 +139,14 @@
         if (self.delegate && [self.delegate respondsToSelector:@selector(adJumpViewWillDisAppear)]) {
             [self.delegate adJumpViewWillDisAppear];
         }
-        
     }];
 }
 
--(void)setCount:(NSInteger)count {
-    
+#pragma mark -getters and setters
+- (void)setCount:(NSInteger)count {
     _count = count;
-    if (_count > 0 && self.adCustomerView) {
-         self.adCustomerView.count = count;
-    }
 }
 
-#pragma mark -lazy
 - (NSTimer *)countTimer {
     
     if (_countTimer == nil) {
@@ -177,7 +159,7 @@
     
     if (!_adImageView) {
         _adImageView = [[UIImageView alloc] init];
-        _adImageView.backgroundColor = [UIColor greenColor];
+        _adImageView.backgroundColor = [UIColor whiteColor];
         _adImageView.contentMode = UIViewContentModeScaleAspectFit;
         _adImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *clickTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleJumpUrl)];
@@ -207,13 +189,12 @@
     return _timerButton;
 }
 
-
--(void)dealloc {
+- (void)dealloc {
+    
     [self.countTimer invalidate];
     self.countTimer = nil;
     NSLog(@"父类广告viewdellog了");
 }
-
 
 /**
  * @brief 显示弹框.
@@ -223,5 +204,7 @@
     _alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"完成认证，即可观看完整内容。" delegate:self cancelButtonTitle:@"立即认证" otherButtonTitles:@"稍后认证", nil];
     [_alertView show];
 }
+
+
 
 @end

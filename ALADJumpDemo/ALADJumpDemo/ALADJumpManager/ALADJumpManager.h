@@ -13,7 +13,6 @@
 @class ALADJumpManager;
 
 @protocol ALADJumpManagerDelegate <NSObject>
-
 /**
  * @brief 更新广告数据
  * @param manager manager
@@ -40,12 +39,16 @@
 
 @end
 
-
-
-
 @interface ALADJumpManager : NSObject
 
-/** 广告所需传入的参数 */
+/** 广告所需传入的参数 更新完成后必须传入参数
+ 图片下载地址              kALADJumpImageUrlKey
+ 广告跳转                 kALADJumpLinkUrlKey
+ 广告持续时间              kALADJumpLinkUrlKey
+ 广告持续时间              kALADJumpContinueTimeKey
+ 程序置于后台多长时间显示    kALADAppInBackgroundTimeKey
+ 是否显示广告              kALADJumpIsShowKey
+ */
 @property (nonatomic, strong) NSDictionary *adParam;
 
 /** delegate */
@@ -76,39 +79,24 @@
 - (void)showADJumpViewWithIsShow:(BOOL)isShow;
 
 /**
- * @brief 从沙盒中获取图片image.
+ * @brief  从沙盒中获取图片image
+ * @param  filePath 文件路径
+ * @return 广告图片数据
  */
-- (UIImage *)getADImageData;
+- (UIImage *)getADImageDataWithFilePath:(NSString *)filePath;
 
 /**
- * @brief 从沙盒中获取广告数据模型
- * @return ALADModel 广告数据模型
+ * @brief  从沙盒中获取广告数据
+ * @param  filePath 文件路径
+ * @return 广告数据
  */
-- (NSDictionary *)getADData;
-
-/**
- * @brief 保存广告数据
- * @param dic 数据字典
- */
-- (void)saveAdDataWithData:(NSDictionary *)dic;
+- (NSDictionary *)getADInfoDataWithFilePath:(NSString *)filePath;
 
 /**
  * @brief 删除imageData
+ * @param filePath 文件路径
  */
-- (void)deleteOldImageData;
+- (void)deleteOldImageDataWithFilePath:(NSString *)filePath;
 
-/**
- * @brief 检查是否存在广告视图
- * @return YES/NO
- */
-+ (BOOL)checkIsExistAdJumpView;
-
-/**
- * @brief 操作广告视图
- * @param isBringToFront 是否置于window前
- * @param isRemove       是否移除广告
- * 注意：二者操作取反
- */
-+ (void)handleAdJumpViewWithBringToFront:(BOOL)isBringToFront orRemove:(BOOL)isRemove;
 
 @end

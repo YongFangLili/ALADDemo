@@ -13,5 +13,8 @@ NSString * const kALADJumpLinkUrlKey         = @"ALADJumpLinkUrl";
 NSString * const kALADJumpContinueTimeKey    = @"ALADJumpContinueTime";
 NSString * const kALADAppInBackgroundTimeKey = @"ALADAppInBackgroundTime";
 NSString * const kALADJumpIsShowKey          = @"ALADJumpIsShow";
+NSString * const kAdImageDataName            = @"adImageDataName";
+NSString * const kAdInfoDataName             = @"adInfoDataName.plist";
+
 
 

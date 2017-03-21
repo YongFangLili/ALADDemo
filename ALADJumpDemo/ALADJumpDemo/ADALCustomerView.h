@@ -10,7 +10,10 @@
 
 @interface ADALCustomerView : UIView
 
+
+/**
+ * @brief 显示广告
+ */
 - (void)showAD;
 
-@property (nonatomic, copy) void(^removeADViewManagerBlock)();
 @end

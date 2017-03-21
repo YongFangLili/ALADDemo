@@ -11,7 +11,6 @@
 		3D26DF121E5D65B500C8EA72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF111E5D65B500C8EA72 /* AppDelegate.m */; };
 		3D26DF151E5D65B500C8EA72 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF141E5D65B500C8EA72 /* ViewController.m */; };
 		3D26DF1A1E5D65B500C8EA72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D26DF191E5D65B500C8EA72 /* Assets.xcassets */; };
-		3D26DF1D1E5D65B500C8EA72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D26DF1B1E5D65B500C8EA72 /* LaunchScreen.storyboard */; };
 		3D26DF281E5D65B500C8EA72 /* ALADJumpDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF271E5D65B500C8EA72 /* ALADJumpDemoTests.m */; };
 		3D26DF331E5D65B500C8EA72 /* ALADJumpDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF321E5D65B500C8EA72 /* ALADJumpDemoUITests.m */; };
 		3D26DF481E5D660400C8EA72 /* ALADJumpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF431E5D660400C8EA72 /* ALADJumpManager.m */; };
@@ -48,7 +47,6 @@
 		3D26DF131E5D65B500C8EA72 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3D26DF141E5D65B500C8EA72 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3D26DF191E5D65B500C8EA72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3D26DF1C1E5D65B500C8EA72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D26DF1E1E5D65B500C8EA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D26DF231E5D65B500C8EA72 /* ALADJumpDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALADJumpDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D26DF271E5D65B500C8EA72 /* ALADJumpDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALADJumpDemoTests.m; sourceTree = "<group>"; };
@@ -129,14 +127,13 @@
 				3D26DF111E5D65B500C8EA72 /* AppDelegate.m */,
 				3D26DF131E5D65B500C8EA72 /* ViewController.h */,
 				3D26DF141E5D65B500C8EA72 /* ViewController.m */,
-				3D26DF191E5D65B500C8EA72 /* Assets.xcassets */,
-				3D26DF1B1E5D65B500C8EA72 /* LaunchScreen.storyboard */,
-				3D26DF1E1E5D65B500C8EA72 /* Info.plist */,
-				3D26DF0D1E5D65B500C8EA72 /* Supporting Files */,
 				3D26DF531E5D71FB00C8EA72 /* ADvertisementManager.h */,
 				3D26DF541E5D71FB00C8EA72 /* ADvertisementManager.m */,
 				3D492C8F1E60397B0007022A /* ADALCustomerView.h */,
 				3D492C901E60397B0007022A /* ADALCustomerView.m */,
+				3D26DF191E5D65B500C8EA72 /* Assets.xcassets */,
+				3D26DF1E1E5D65B500C8EA72 /* Info.plist */,
+				3D26DF0D1E5D65B500C8EA72 /* Supporting Files */,
 			);
 			path = ALADJumpDemo;
 			sourceTree = "<group>";
@@ -310,7 +307,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D26DF1D1E5D65B500C8EA72 /* LaunchScreen.storyboard in Resources */,
 				3D26DF1A1E5D65B500C8EA72 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,17 +422,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		3D26DF1B1E5D65B500C8EA72 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3D26DF1C1E5D65B500C8EA72 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		3D26DF351E5D65B500C8EA72 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -533,6 +518,7 @@
 			baseConfigurationReference = 888A067552C979A9D7BD22C6 /* Pods-ALADJumpDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9J4Y7YNRRQ;
 				INFOPLIST_FILE = ALADJumpDemo/Info.plist;
@@ -548,6 +534,7 @@
 			baseConfigurationReference = 1D0D5205223BB9E0D66CBA5E /* Pods-ALADJumpDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9J4Y7YNRRQ;
 				INFOPLIST_FILE = ALADJumpDemo/Info.plist;

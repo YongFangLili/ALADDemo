@@ -12,15 +12,22 @@
 @interface ADvertisementManager : NSObject
 
 
+/**
+ * @brief 广告manager
+ */
 @property (nonatomic, strong) ALADJumpManager *adManager;
 
 /**
- 广告单例
- @return 广告
+ * @brief 广告单例
+ * @return 广告
  */
 + (instancetype)sharedADManager;
 
--(void)showAD;
+/**
+ * @brief 显示广告
+ */
++ (void)showAD;
+
 
 
 

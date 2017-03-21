@@ -9,36 +9,38 @@
 
 #import "ADALCustomerView.h"
 #import "ALADJumpHeader.h"
-#import "ALADJumpConstant.h"
+/** 图片目录 */
+#define kadImagePath [kCachPath stringByAppendingPathComponent:@"AD"]
 
 static NSInteger  const adTime = 3;
 static CGFloat const btnWidth = 60.0f;
 static  CGFloat const btnHeight = 30.0f;
 
 @interface ADALCustomerView()
-
-///广告图片.
+/** 广告图片 */
 @property (nonatomic,strong) UIImageView * imgVAD;
-///广告下部唯医图片.
-@property (nonatomic,strong) UIImageView * imgVBack;
-///记录时间
-@property (nonatomic,strong) UIButton * btnCount;
-@property (nonatomic,strong) NSTimer  * countTimer;
-///记录当前秒数.
-@property (nonatomic,assign) NSInteger  count;
-/// 进入时间.
-@property (nonatomic , copy) NSString *enterTime;
 
+/** 广告下部唯医图片 */
+@property (nonatomic,strong) UIImageView * imgVBack;
+/** 记录时间 */
+@property (nonatomic,strong) UIButton * btnCount;
+/** 定时器 */
+@property (nonatomic,strong) NSTimer  * countTimer;
+/** 记录当前秒数 */
+@property (nonatomic,assign) NSInteger  count;
+/** 进入时间 */
+@property (nonatomic , copy) NSString *enterTime;
+/**ALADmanager */
 @property (nonatomic, strong) ALADJumpManager *adManager;
 
 @end
 @implementation ADALCustomerView
 
 /**
- *  @brief 显示广告.
+ * @brief 显示广告.
  */
-- (void)showAD
-{
+- (void)showAD {
+    
     if ([self isShowAd]) {
         [self startTimer];
         
@@ -51,18 +53,23 @@ static  CGFloat const btnHeight = 30.0f;
     
 }
 
+/**
+ * @brief 是否显示广告.
+ */
 - (BOOL)isShowAd {
     
-    NSDictionary *dic = [self.adManager getADData];
-    UIImage *adImage = [self.adManager getADImageData];
+    NSDictionary *dic = [self.adManager getADInfoDataWithFilePath:kadImagePath];
+    UIImage *adImage = [self.adManager getADImageDataWithFilePath:kadImagePath];
     if (dic[kALADJumpIsShowKey] && dic[kALADJumpImageUrlKey] && adImage) {
         self.imgVAD.image = adImage;
         return YES;
     }
     return NO;
-
 }
 
+/**
+ * @brief 更新广告数据
+ */
 - (void)updateADData {
     
     NSLog(@"ad网络请求");
@@ -78,19 +85,20 @@ static  CGFloat const btnHeight = 30.0f;
     [adDic setValue:@(appInBackgroundTime) forKey:kALADAppInBackgroundTimeKey];
     [adDic setObject:@(YES) forKey:kALADJumpIsShowKey];
     // 存储广告
-    [self.adManager saveAdDataWithData:adDic];
+    self.adManager.adParam = adDic;
 }
 
-- (void) startTimer
-{
+/**
+ * @brief 开始定时器
+ */
+- (void)startTimer {
+    
     _count = adTime;
     [[NSRunLoop mainRunLoop] addTimer:self.countTimer forMode:NSRunLoopCommonModes];
 }
 
-
 #pragma mark - 初始化方法
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     
     self = [super initWithFrame:frame];
     if (self) {
@@ -103,8 +111,11 @@ static  CGFloat const btnHeight = 30.0f;
     return self;
 }
 
+/**
+ * @brief 初始化 UI
+ */
 - (void)setUpUI {
-    //1.广告图片
+    //广告图片
     _imgVAD= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width ,[UIScreen mainScreen].bounds.size.height)];
     _imgVAD.userInteractionEnabled = YES;
     _imgVAD.backgroundColor =  [UIColor yellowColor];
@@ -122,23 +133,21 @@ static  CGFloat const btnHeight = 30.0f;
     [_btnCount setTitle:[NSString stringWithFormat:@"跳过 %ld",(long)adTime] forState:UIControlStateNormal];
     [_btnCount setBackgroundImage:[UIImage imageNamed:@"home_page_skip.png"] forState:UIControlStateNormal];
     _btnCount.layer.cornerRadius = 4;
-
-
 }
 
 /**
  *  @brief 广告页面的点击.
  */
-- (void) tapGesHandle:(UITapGestureRecognizer *) tap
-{
+- (void)tapGesHandle:(UITapGestureRecognizer *)tap {
+    
     [self dismissAD];
 }
 
 /**
  *  @brief 定时器响应.
  */
-- (void) countDownEventHandle
-{
+- (void)countDownEventHandle {
+    
     _count--;
     [_btnCount setTitle:[NSString stringWithFormat:@"跳过 %ld",(long)_count] forState:UIControlStateNormal];
     if (_count == 1) {
@@ -146,11 +155,12 @@ static  CGFloat const btnHeight = 30.0f;
         [self dismissAD];
     }
 }
+
 /**
  *  @brief 使广告页消失.
  */
-- (void) dismissAD
-{
+- (void) dismissAD {
+    
     [self.countTimer invalidate];
     self.countTimer = nil;
     
@@ -160,14 +170,12 @@ static  CGFloat const btnHeight = 30.0f;
     } completion:^(BOOL finished) {
         
         [self removeFromSuperview];
-        
-        if (self.removeADViewManagerBlock) {
-            self.removeADViewManagerBlock();
-        }
     }];
 }
 
-- (UIImageView *)imgVBack{
+#pragma mark - 懒加载
+- (UIImageView *)imgVBack {
+    
     if (!_imgVBack) {
         _imgVBack = [[UIImageView alloc]init];
         _imgVBack.image = [UIImage imageNamed:@"home_page_ad"];
@@ -176,10 +184,8 @@ static  CGFloat const btnHeight = 30.0f;
     return _imgVBack;
     
 }
-
-#pragma mark - 懒加载
-- (NSTimer *)countTimer
-{
+- (NSTimer *)countTimer {
+    
     if (_countTimer == nil) {
         
         _countTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countDownEventHandle) userInfo:nil repeats:YES];
@@ -194,7 +200,5 @@ static  CGFloat const btnHeight = 30.0f;
     }
     return _adManager;
 }
-
-
 
 @end
