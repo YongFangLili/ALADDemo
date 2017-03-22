@@ -8,7 +8,7 @@
 //
 
 #import "ADvertisementManager.h"
-#import "ALADDefineHeader.h"
+#import "ALADJumpHeader.h"
 /** 图片目录 */
 #define kadImagePath [kCachPath stringByAppendingPathComponent:@"AD"]
 
@@ -22,7 +22,7 @@
  */
 + (void)showAD {
     
-    [[ADvertisementManager sharedADManager].adManager showADJumpViewWithIsShow:YES];
+    [[ADvertisementManager sharedADManager].adManager showADJumpViewWithIsShow:[self isShowAD]];
 }
 
 /** 单例 */
@@ -48,21 +48,19 @@ static id _instance;
     NSInteger adContitueTime = 3;
     NSInteger appInBackgroundTime = 3;
     NSMutableDictionary *adDic = [NSMutableDictionary dictionary];
-    
     [adDic setObject:adImageUrl forKey:kALADJumpImageUrlKey];
     [adDic setObject:linkUrl forKey:kALADJumpLinkUrlKey];
     [adDic setValue:@(adContitueTime) forKey:kALADJumpContinueTimeKey];
     [adDic setValue:@(appInBackgroundTime) forKey:kALADAppInBackgroundTimeKey];
     [adDic setObject:@(YES) forKey:kALADJumpIsShowKey];
-    
     self.adManager.adParam = adDic;
 }
 
 /**
- * @brief  是否所有的界面显示AD
+ * @brief  当前界面是否显示AD
  * @return YES / NO
  */
-- (BOOL)isAllViewShowAD{
++ (BOOL)isShowAD{
     
     return YES;
 }
@@ -85,7 +83,6 @@ static id _instance;
 }
 
 #pragma mark -ALADJumpManagerDelegate
-
 -(void)ALADJumpUpdateALADData:(ALADJumpManager *)manager {
     [self adRequest];
 }
@@ -93,7 +90,6 @@ static id _instance;
 - (void)ALADJumpViewWillApear:(ALADJumpManager *)manager {
     
     [self createBraouseLogRequestWithDate:[NSDate date]];
-    
 }
 
 -(void)ALADJumpViewWillDisapear:(ALADJumpManager *)manager {

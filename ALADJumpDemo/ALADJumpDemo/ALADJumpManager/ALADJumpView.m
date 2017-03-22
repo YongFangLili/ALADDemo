@@ -127,7 +127,6 @@
 - (void)dismissAD {
     
     NSLog(@"点击了广告");
-    
     [self.countTimer invalidate];
     self.countTimer = nil;
     
@@ -193,7 +192,7 @@
     
     [self.countTimer invalidate];
     self.countTimer = nil;
-    NSLog(@"父类广告viewdellog了");
+    NSLog(@"广告view dellog了");
 }
 
 /**
@@ -204,7 +203,4 @@
     _alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"完成认证，即可观看完整内容。" delegate:self cancelButtonTitle:@"立即认证" otherButtonTitles:@"稍后认证", nil];
     [_alertView show];
 }
-
-
-
 @end

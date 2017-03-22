@@ -304,8 +304,8 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
     if (self.delegate && [self.delegate respondsToSelector:@selector(ALADJumpViewWillDisapear:)]) {
         [self.delegate ALADJumpViewWillDisapear:self];
     }
-
 }
+
 /**
  * @breif 默认值处理
  * @param paramDic 参数
@@ -343,7 +343,7 @@ static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgr
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:UIApplicationDidEnterBackgroundNotification];
-    NSLog(@"移除了manager");
+    NSLog(@"manager dellog 了");
 }
 
 @end

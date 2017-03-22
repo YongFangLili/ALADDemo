@@ -43,14 +43,12 @@ static  CGFloat const btnHeight = 30.0f;
     
     if ([self isShowAd]) {
         [self startTimer];
-        
         UIWindow * window = [UIApplication sharedApplication].keyWindow;
         [window addSubview:self];
         [window bringSubviewToFront:self];
     }
     // 更新数据源
     [self updateADData];
-    
 }
 
 /**
