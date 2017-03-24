@@ -19,7 +19,6 @@ static  CGFloat const btnHeight = 30.0f;
 @interface ADALCustomerView()
 /** 广告图片 */
 @property (nonatomic,strong) UIImageView * imgVAD;
-
 /** 广告下部唯医图片 */
 @property (nonatomic,strong) UIImageView * imgVBack;
 /** 记录时间 */
@@ -104,7 +103,7 @@ static  CGFloat const btnHeight = 30.0f;
         [self addSubview:_imgVAD];
         [self addSubview:_btnCount];
        
-        self.imgVAD.backgroundColor = [UIColor cyanColor];
+        _imgVAD.backgroundColor = [UIColor cyanColor];
     }
     return self;
 }

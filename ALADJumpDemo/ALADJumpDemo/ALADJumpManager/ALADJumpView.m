@@ -26,8 +26,6 @@
 /** 认证弹框 */
 @property (nonatomic, strong) UIAlertView *alertView;
 
-
-
 @end
 
 @implementation ALADJumpView
@@ -108,16 +106,12 @@
  */
 - (void)countDownEventHandle {
     
-    self.count--;
+    _count--;
     if (_count > 0) {
         [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",(long)_count] forState:UIControlStateNormal];
     }
     if (_count == 0) {
         [self dismissAD];
-    }
-    
-    if (_count == 2) {
-        [self showAlertView];
     }
 }
 
