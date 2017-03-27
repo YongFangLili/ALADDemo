@@ -23,9 +23,6 @@
 /** 自定义button */
 @property (nonatomic, strong) UIButton * customerButton;
 
-/** 认证弹框 */
-@property (nonatomic, strong) UIAlertView *alertView;
-
 @end
 
 @implementation ALADJumpView
@@ -97,7 +94,10 @@
     
     // 默认为3秒
     NSInteger time = [self.adDic[kALADJumpContinueTimeKey] integerValue];
-    self.count = time ? time : kDefaultTimeContineAd;
+    _count = time ? time : kDefaultTimeContineAd;
+    if (_count == 0) {
+        _count = kDefaultTimeContineAd;
+    }
     [[NSRunLoop mainRunLoop] addTimer:self.countTimer forMode:NSRunLoopCommonModes];
 }
 
@@ -136,10 +136,6 @@
 }
 
 #pragma mark -getters and setters
-- (void)setCount:(NSInteger)count {
-    _count = count;
-}
-
 - (NSTimer *)countTimer {
     
     if (_countTimer == nil) {
@@ -187,14 +183,5 @@
     [self.countTimer invalidate];
     self.countTimer = nil;
     NSLog(@"广告view dellog了");
-}
-
-/**
- * @brief 显示弹框.
- */
-- (void)showAlertView {
-    
-    _alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"完成认证，即可观看完整内容。" delegate:self cancelButtonTitle:@"立即认证" otherButtonTitles:@"稍后认证", nil];
-    [_alertView show];
 }
 @end
