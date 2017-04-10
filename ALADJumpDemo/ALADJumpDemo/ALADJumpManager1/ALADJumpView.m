@@ -34,8 +34,8 @@
 
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
-        // 设置window的优先级 比状态栏低一级
-        self.windowLevel = UIWindowLevelStatusBar -1;
+        // 设置window的优先级
+        self.windowLevel = UIWindowLevelAlert + UIWindowLevelAlert;
         _adDic = dataDic;
         if (customerButton) {
             _customerButton = customerButton;
@@ -57,7 +57,7 @@
     self.adImageView.frame = CGRectMake(0, 0, kPHONE_WIDTH, kPHONE_HEIGH);
     [self addSubview:self.timerButton];
     [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",[[self.adDic objectForKey:kALADJumpContinueTimeKey] integerValue]] forState:UIControlStateNormal];
-    
+    [self makeKeyAndVisible];
 }
 
 /**
@@ -66,7 +66,6 @@
 - (void)showAD {
     
     self.adImageView.image = [UIImage imageWithContentsOfFile:self.filePath];
-    [self makeKeyAndVisible];
     if (self.delegate && [self.delegate respondsToSelector:@selector(adJumpViewWillAppear)]) {
         [self.delegate adJumpViewWillAppear];
     }
@@ -121,13 +120,15 @@
  */
 - (void)dismissAD {
     
+    NSLog(@"点击了广告");
     [self.countTimer invalidate];
     self.countTimer = nil;
+    
     [UIView animateWithDuration:0.3 animations:^{
         self.alpha = 0;
-        
     } completion:^(BOOL finished) {
-        [self resignKeyWindow];
+        
+        [self removeFromSuperview];
         if (self.delegate && [self.delegate respondsToSelector:@selector(adJumpViewWillDisAppear)]) {
             [self.delegate adJumpViewWillDisAppear];
         }

@@ -25,6 +25,47 @@
     [[ADvertisementManager sharedADManager].adManager showADJumpViewWithIsShow:[self isShowAD]];
 }
 
+/**
+ * @brief 后台启动APP显示广告
+ */
++ (void)showADFromBackGround{
+    
+    if ([self isOverAddTime]) {
+        // 删除之前保存的时间
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kEnterBackGroundTime"];
+        
+        [[ADvertisementManager sharedADManager].adManager showADJumpViewWithIsShow:[self isShowAD]];
+    }
+}
+
+/**
+ * @brief 保存app进入后台时的时间
+ */
++ (void)saveCurrentDataWhenAPPBackInGround{
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"kEnterBackGroundTime"];
+    
+}
+
+/**
+ * @brief 是否超过广告所进入后台的时间
+ */
++ (BOOL)isOverAddTime {
+    
+    // 判断时间
+    // 判断是否超过1分钟
+    NSDate *enterBackGroundDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"kEnterBackGroundTime"];
+    if (enterBackGroundDate) {
+        
+        NSDictionary *dic = [[ADvertisementManager sharedADManager].adManager getADInfoDataWithFilePath:kadImagePath];
+        NSTimeInterval lastMoreTime = [[dic objectForKey:kALADAppInBackgroundTimeKey] doubleValue];
+        NSTimeInterval interVal =[[NSDate date] timeIntervalSinceDate:enterBackGroundDate];
+        return interVal > lastMoreTime;
+    }
+    return YES;
+}
+
+
 /** 单例 */
 static id _instance;
 + (instancetype)sharedADManager {

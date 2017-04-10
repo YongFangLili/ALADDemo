@@ -29,6 +29,18 @@
 + (void)showAD;
 
 
+/**
+ * @brief 后台启动APP显示广告
+ */
++ (void)showADFromBackGround;
+
+/**
+ * @brief 保存app进入后台时的时间
+ */
++ (void)saveCurrentDataWhenAPPBackInGround;
+
+
+
 
 
 @end

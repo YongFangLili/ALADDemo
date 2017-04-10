@@ -10,6 +10,9 @@
 #import "ALADJumpView.h"
 #import "ALADDefineHeader.h"
 
+/** 进入后台时的时间 */
+static NSString *  const kSaveTimeWhenEnterBackgroud= @"kSaveTimeWhenEnterBackgroud";
+
 @interface ALADJumpManager()<ALADJumpViewDelegate>
 
 /** 上一次保存的模型数据 */
@@ -20,6 +23,9 @@
 
 /** 文件路径 */
 @property (nonatomic, copy) NSString *filePath;
+
+/** 是否从后台进入 */
+@property (nonatomic, assign) BOOL isBackgroundIn;
 
 /** 自定义Button */
 @property (nonatomic, strong) UIButton *customerButton;
@@ -38,17 +44,20 @@
         [self.delegate ALADJumpUpdateALADData:self];
     }
     
-    // 视图能在view上显示    置于后台时间没有超时  并且后台允许显示广告  文件里有没有图片
+    // 视图能在view上显示    置于后台时间没有超时  并且后台允许显示广告
     self.oldDataDic = [self getADInfoDataWithFilePath:self.filePath];
-    UIImage *image = [self getADImageDataWithFilePath:self.filePath];
-    if (!self.oldDataDic || ![[self.oldDataDic objectForKey:kALADJumpIsShowKey] boolValue] || !image) {
+    if (!self.oldDataDic || ![[self.oldDataDic objectForKey:kALADJumpIsShowKey] boolValue]) {
         return;
     }
-    // 判断是否显示广告
-    if (isShow ) {
-        
-        if ([self.oldDataDic objectForKey:kALADJumpImageUrlKey]!= nil) {
+    // 判断是都显示广告  如果是置于后台需要判断是否超过时限
+    if (isShow && [self isShowADView]) {
+        // 删除之前后台存储的时间
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSaveTimeWhenEnterBackgroud];
+        self.isBackgroundIn = NO;
+        if ( [self.oldDataDic objectForKey:kALADJumpImageUrlKey]!= nil
+          ) {
             // 显示广告图片
+
             ALADJumpView *adJumpView = [[ALADJumpView alloc] initAdJumpViewFrame:CGRectMake(0, 0,kPHONE_WIDTH , kPHONE_HEIGH) andWithAppType:self.appType  withDataDic:self.oldDataDic withCustomerButton:self.customerButton ];
             adJumpView.filePath = [self getFilePathWithPath:_filePath withFileName:kAdImageDataName];
             adJumpView.delegate = self;
@@ -73,6 +82,7 @@
         _appType = appType;
         _oldDataDic = [self getADInfoDataWithFilePath:_filePath];
         self.customerButton = customeButton;
+        [self addNotice];
     }
     return self;
 }
@@ -91,12 +101,64 @@
 }
 
 /**
+ * @brief 是否显示广告
+ */
+- (BOOL)isShowADView {
+    
+    // 如果不是从后台进入不需要判断
+    if (!self.isBackgroundIn) {
+        // 移除当前的时间
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSaveTimeWhenEnterBackgroud];
+        return YES;
+    }
+    
+    NSTimeInterval lastMoreTime = [self.oldDataDic[kALADAppInBackgroundTimeKey] doubleValue] ? [self.oldDataDic[kALADAppInBackgroundTimeKey] doubleValue] : kDefaultTimeBackgroud;
+    //3. 获取进入后台时长
+    NSDate *lastInBackgroundTime = [[NSUserDefaults standardUserDefaults] objectForKey:kSaveTimeWhenEnterBackgroud];
+    NSTimeInterval interVal =[[NSDate date] timeIntervalSinceDate:lastInBackgroundTime];
+    return interVal > lastMoreTime;
+}
+
+
+/**
+ * @brief 添加app进入后台通知
+ */
+- (void)addNotice {
+    
+    //监控 app 活动状态，打电话/锁屏 时暂停播放
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(appDidEnterBackground:)
+     name:UIApplicationDidEnterBackgroundNotification
+     object:nil];
+}
+
+/**
+ * @brief 进入后台保存时间
+ * @param notice 通知
+ */
+- (void)appDidEnterBackground:(NSNotification *)notice {
+    
+    [self saveInBackgroundTime];
+    self.isBackgroundIn = YES;
+}
+
+/**
+ * @brief 保存广告
+ */
+- (void)saveInBackgroundTime {
+    // 记录当前的时间
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kSaveTimeWhenEnterBackgroud];
+}
+
+/**
  * @brief 处理广告数据
  * @param dic 网络请求得到的新model
  */
 - (void)handleDataWithDic:(NSDictionary *)dic {
     
     // 图片不一样重新下载图片
+    [self saveAdInfoDataWithData:dic];
     if (dic[kALADJumpLinkUrlKey] == nil || ![[dic objectForKey:kALADJumpImageUrlKey] isEqualToString:[self.oldDataDic objectForKey:kALADJumpImageUrlKey]]) {
         // 异步下载图片
         [self downloadADImageWithDataDic:dic];
@@ -110,16 +172,15 @@
 - (void)downloadADImageWithDataDic:(NSDictionary *)dic {
     
     NSString *imageUrl = [dic objectForKey:kALADJumpImageUrlKey];
-    NSURL *url = [NSURL URLWithString: [dic objectForKey:kALADJumpImageUrlKey]];
-    if (imageUrl && imageUrl.length > 0 && url) {
+
+    if (imageUrl && imageUrl.length > 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
             //下载数据
             NSError *error = nil;
-            NSData *data= [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:&error];
+            NSData *data= [NSData dataWithContentsOfURL:[NSURL URLWithString: [dic objectForKey:kALADJumpImageUrlKey]] options:NSDataReadingUncached error:&error];
             UIImage * image = [UIImage imageWithData:data];
             BOOL ret = [UIImagePNGRepresentation(image) writeToFile:[self getFilePathWithPath:self.filePath withFileName:kAdImageDataName] atomically:YES];
             if (ret) {
-                [self saveAdInfoDataWithData:dic];
                 NSLog(@"写入图片成功");
             }else {
                 [self deleteOldImageDataWithFilePath:self.filePath];
@@ -280,6 +341,8 @@
 }
 
 - (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:UIApplicationDidEnterBackgroundNotification];
     NSLog(@"manager dellog 了");
 }
 
