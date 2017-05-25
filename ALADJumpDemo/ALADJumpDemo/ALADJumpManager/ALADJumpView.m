@@ -52,9 +52,18 @@
  */
 - (void)setUpUIWithAppType:(ALADJumpAppType)appType {
     
-    [self addSubview:self.adImageView];
+    
     // imageView
-    self.adImageView.frame = CGRectMake(0, 0, kPHONE_WIDTH, kPHONE_HEIGH);
+    if (appType == eALADAllimd) {
+        UIImageView *botomView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kPHONE_WIDTH, kPHONE_HEIGH)];
+        [self addSubview:botomView];
+        botomView.image = [UIImage imageNamed:@"ad_backgroundImage"];
+        [self addSubview:self.adImageView];
+        self.adImageView.frame = CGRectMake(0, 0, kPHONE_WIDTH, 527 * kScreenScaleHeight);
+    }else {
+        [self addSubview:self.adImageView];
+        self.adImageView.frame = CGRectMake(0, 0, kPHONE_WIDTH, kPHONE_HEIGH);
+    }
     [self addSubview:self.timerButton];
     [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",[[self.adDic objectForKey:kALADJumpContinueTimeKey] integerValue]] forState:UIControlStateNormal];
     
