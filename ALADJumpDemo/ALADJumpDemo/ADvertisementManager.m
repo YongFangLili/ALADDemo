@@ -89,6 +89,7 @@ static id _instance;
     NSInteger adContitueTime = 3;
     NSInteger appInBackgroundTime = 3;
     NSMutableDictionary *adDic = [NSMutableDictionary dictionary];
+    // 上传图片的url数组
     [adDic setObject:adImageUrl forKey:kALADJumpImageUrlKey];
     [adDic setObject:linkUrl forKey:kALADJumpLinkUrlKey];
     [adDic setValue:@(adContitueTime) forKey:kALADJumpContinueTimeKey];

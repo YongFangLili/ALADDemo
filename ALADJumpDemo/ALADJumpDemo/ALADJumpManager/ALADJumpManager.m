@@ -9,12 +9,16 @@
 #import "ALADJumpManager.h"
 #import "ALADJumpView.h"
 #import "ALADDefineHeader.h"
+#import "XHLaunchAdDownloader.h"
 
 //静态图
 #define imageURL1 @"http://c.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b78c4e5d703d162d9f2d3c934.jpg"
 #define imageURL2 @"http://d.hiphotos.baidu.com/image/pic/item/f7246b600c3387444834846f580fd9f9d72aa034.jpg"
 #define imageURL3 @"http://d.hiphotos.baidu.com/image/pic/item/64380cd7912397dd624a32175082b2b7d0a287f6.jpg"
 #define imageURL4 @"http://d.hiphotos.baidu.com/image/pic/item/14ce36d3d539b60071473204e150352ac75cb7f3.jpg"
+#define imageURL8 @"https://img99.allinmd.cn/ad/2017/04/26/1366_1493170365933.jpg"
+#define imageURL9 @"https://img99.allinmd.cn/ad/2017/01/22/1292_1485055213513.png"
+#define imageURL10 @"https://img99.allinmd.cn/ad/2017/03/31/1350_1490946188888.png"
 
 //动态图
 #define imageURL5 @"http://c.hiphotos.baidu.com/image/pic/item/d62a6059252dd42a6a943c180b3b5bb5c8eab8e7.jpg"
@@ -44,11 +48,20 @@
 
 @implementation ALADJumpManager
 
+// downLoadText
+- (void)dowLoadImagesArrays {
+    
+    [[XHLaunchAdDownloader sharedDownloader] downLoadImageAndCacheWithURLArray:@[[NSURL URLWithString:imageURL5],[NSURL URLWithString:imageURL6],[NSURL URLWithString:imageURL7]]];
+
+}
+
 /**
  * @brief 添加广告视图
  * @param isShow 是否在当前界面显示广告
  */
 - (void)showADJumpViewWithIsShow:(BOOL)isShow {
+    
+    [self dowLoadImagesArrays];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(ALADJumpUpdateALADData:)]) {
         [self.delegate ALADJumpUpdateALADData:self];

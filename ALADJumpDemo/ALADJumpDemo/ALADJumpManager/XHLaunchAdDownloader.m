@@ -9,7 +9,7 @@
 #import "XHLaunchAdDownloader.h"
 #import "XHLaunchAdCache.h"
 #import "NSString+XHLaunchAd.h"
-//#import "XHLaunchAdImage.h"
+#import "XHLaunchAdImage.h"
 
 #pragma mark - XHLaunchAdDownload
 @interface XHLaunchAdDownload()
@@ -60,12 +60,12 @@
 didFinishDownloadingToURL:(NSURL *)location {
     
     NSData *data = [NSData dataWithContentsOfURL:location];
-//    UIImage *image = [XHLaunchAdImage imageWithData:data];
+    UIImage *image = [XHLaunchAdImage imageWithData:data];
     //主线程回调
     dispatch_async(dispatch_get_main_queue(), ^{
         
         if (_completedBlock) {
-//            _completedBlock(image,data, nil);
+            _completedBlock(image,data, nil);
             // 防止重复调用
             _completedBlock = nil;
         }
@@ -250,7 +250,7 @@ didFinishDownloadingToURL:(NSURL *)location {
         if(![XHLaunchAdCache checkImageInCacheWithURL:url])
         {
             [self downloadImageWithURL:url progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error) {
-                
+                NSLog(@"下载成功url:%@",url);
                 [XHLaunchAdCache async_saveImageData:data imageURL:url];
                 
             }];
