@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 NSString * const kALADJumpImageUrlKey        = @"ALADJumpImageUrl";
+NSString * const kALADJumpImageUrlArraysKey  = @"ALADJumpImageUrlArrays";
 NSString * const kALADJumpLinkUrlKey         = @"ALADJumpLinkUrl";
 NSString * const kALADJumpContinueTimeKey    = @"ALADJumpContinueTime";
 NSString * const kALADAppInBackgroundTimeKey = @"ALADAppInBackgroundTime";

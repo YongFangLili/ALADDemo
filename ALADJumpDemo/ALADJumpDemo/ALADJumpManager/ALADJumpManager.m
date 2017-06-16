@@ -10,6 +10,22 @@
 #import "ALADJumpView.h"
 #import "ALADDefineHeader.h"
 
+//静态图
+#define imageURL1 @"http://c.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b78c4e5d703d162d9f2d3c934.jpg"
+#define imageURL2 @"http://d.hiphotos.baidu.com/image/pic/item/f7246b600c3387444834846f580fd9f9d72aa034.jpg"
+#define imageURL3 @"http://d.hiphotos.baidu.com/image/pic/item/64380cd7912397dd624a32175082b2b7d0a287f6.jpg"
+#define imageURL4 @"http://d.hiphotos.baidu.com/image/pic/item/14ce36d3d539b60071473204e150352ac75cb7f3.jpg"
+
+//动态图
+#define imageURL5 @"http://c.hiphotos.baidu.com/image/pic/item/d62a6059252dd42a6a943c180b3b5bb5c8eab8e7.jpg"
+#define imageURL6 @"http://p1.bqimg.com/567571/4ce1a4c844b09201.gif"
+#define imageURL7 @"http://p1.bqimg.com/567571/23a4bc7a285c1179.gif"
+
+//视频链接
+#define videoURL1 @"http://ohnzw6ag6.bkt.clouddn.com/video0.mp4"
+#define videoURL2  @"http://120.25.226.186:32812/resources/videos/minion_01.mp4"
+#define videoURL3 @"http://ohnzw6ag6.bkt.clouddn.com/video1.mp4"
+
 @interface ALADJumpManager()<ALADJumpViewDelegate>
 
 /** 上一次保存的模型数据 */
