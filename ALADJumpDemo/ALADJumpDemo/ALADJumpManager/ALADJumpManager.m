@@ -141,7 +141,7 @@
     NSString *imageUrl = [dic objectForKey:kALADJumpImageUrlKey];
     NSURL *url = [NSURL URLWithString: [dic objectForKey:kALADJumpImageUrlKey]];
     if (imageUrl && imageUrl.length > 0 && url) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
             //下载数据
             NSError *error = nil;
             NSData *data= [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:&error];
