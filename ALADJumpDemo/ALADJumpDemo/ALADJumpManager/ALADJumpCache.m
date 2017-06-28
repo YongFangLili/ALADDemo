@@ -47,8 +47,8 @@ NSString * const kADInfoDataFileName             = @"adInfoDataName.plist";
     
     NSString *savePath = [self ADInfoFilePathWithDirFilePath:filePath];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
         BOOL isSecucess = [adInfoDic writeToFile:savePath atomically:YES];
         if (isSecucess) {
             NSLog(@"保存成功");
@@ -56,7 +56,7 @@ NSString * const kADInfoDataFileName             = @"adInfoDataName.plist";
             NSLog(@"保存失败");
         
         }
-    });
+//    });
 }
 
 // 获取图片保存路径
@@ -71,7 +71,7 @@ NSString * const kADInfoDataFileName             = @"adInfoDataName.plist";
 + (NSString *)ADInfoFilePathWithDirFilePath:(NSString *)dirFilePath {
     
     NSString *fileDir = [self checkFilepathWithFilePath:dirFilePath];
-    NSString *savePath = [fileDir stringByAppendingPathComponent:(kADInfoDataFileName).xh_md5String];
+    NSString *savePath = [fileDir stringByAppendingPathComponent:(kADInfoDataFileName)];
     return savePath;
 }
 
@@ -81,7 +81,12 @@ NSString * const kADInfoDataFileName             = @"adInfoDataName.plist";
     
     if (url == nil) return nil;
     NSString *savePath = [NSString stringWithFormat:@"%@/%@",[self checkFilepathWithFilePath:filePath],url.absoluteString.xh_md5String];
-    NSData *data = [NSData dataWithContentsOfFile:savePath];;
+    NSData *data = [NSData dataWithContentsOfFile:savePath];
+    UIImage *image = [UIImage imageWithData:data];
+    if (image == nil && savePath) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        [fileManager removeItemAtPath:filePath error:nil];
+    }
     
     return [UIImage imageWithData:data];
 }
@@ -89,7 +94,7 @@ NSString * const kADInfoDataFileName             = @"adInfoDataName.plist";
 + (NSDictionary *)getADInfoDicWithFilePath:(NSString *)filePath {
     
     NSString *fileDir = [self checkFilepathWithFilePath:filePath];
-    NSString *savePath = [fileDir stringByAppendingPathComponent:(kADInfoDataFileName).xh_md5String];
+    NSString *savePath = [fileDir stringByAppendingPathComponent:(kADInfoDataFileName)];
     NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:savePath];
     return dic;
 }

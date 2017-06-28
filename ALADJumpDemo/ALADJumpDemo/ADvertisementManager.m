@@ -102,7 +102,7 @@ static id _instance;
     NSMutableDictionary *adDic = [NSMutableDictionary dictionary];
     // 上传图片的url数组
     // imageURL2,imageURL3,imageURL4,imageURL10,imageURL11,imageURL8,imageURL9,
-    NSArray *imageUrlArray = [NSArray arrayWithObjects:imageURL1,nil];
+    NSArray *imageUrlArray = [NSArray arrayWithObjects:imageURL1,imageURL2,imageURL3,imageURL4,imageURL10,nil];
     NSArray *linkUrlArray = [NSArray arrayWithObjects:linkUrl,linkUrl,linkUrl,linkUrl,nil, nil];
     [adDic setObject:imageUrlArray forKey:kALADJumpImageUrlArraysKey];
     [adDic setObject:linkUrlArray forKey:kALADJumpLinkUrlArraysKey];
@@ -151,7 +151,7 @@ static id _instance;
 -(void)ALADJumpViewWillDisapear:(ALADJumpManager *)manager {
     
     [self createBraouseLogRequestWithDate:[NSDate date]];
-    self.adManager = nil;
+//    self.adManager = nil;
     
 }
 
