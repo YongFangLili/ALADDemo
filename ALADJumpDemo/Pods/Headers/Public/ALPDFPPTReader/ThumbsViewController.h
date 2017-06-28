@@ -1,1 +1,0 @@
-../../../ALPDFPPTReader/ReaderSources/ThumbsViewController.h

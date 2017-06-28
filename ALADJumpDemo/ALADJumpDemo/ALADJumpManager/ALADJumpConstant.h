@@ -10,9 +10,9 @@
 #define ALADJumpConstant_h
 
 /** imageUrl*/
-extern NSString * const kALADJumpImageUrlKey;
+extern NSString * const kALADJumpImageUrlArraysKey;
 /** 广告跳转LinkUrl*/
-extern NSString * const kALADJumpLinkUrlKey;
+extern NSString * const kALADJumpLinkUrlArraysKey;
 /** 广告持续时间key*/
 extern NSString * const kALADJumpContinueTimeKey;
 /** APP置于后台多长时间显示key*/
@@ -23,6 +23,8 @@ extern NSString * const kALADJumpIsShowKey;
 extern NSString * const kAdImageDataName;
 /*** 保存广告基本信息文件名 */
 extern NSString * const kAdInfoDataName;
+/** 上一次轮播的Index */
+extern NSString * const kALADImageCurrentIndex;
 
 
 #endif /* ALADJumpConstant_h */

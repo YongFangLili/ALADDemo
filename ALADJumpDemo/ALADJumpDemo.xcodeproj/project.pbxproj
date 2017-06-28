@@ -22,6 +22,9 @@
 		3DA147A81EF38F2C00B0B3F1 /* NSString+XHLaunchAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA147A71EF38F2C00B0B3F1 /* NSString+XHLaunchAd.m */; };
 		3DA147AB1EF38F4B00B0B3F1 /* XHLaunchAdCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA147AA1EF38F4B00B0B3F1 /* XHLaunchAdCache.m */; };
 		3DAFC9B61EF3B04100DCC69D /* XHLaunchAdImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFC9B51EF3B04100DCC69D /* XHLaunchAdImage.m */; };
+		3DB35C3F1F02494F00748DBF /* ALADJumpCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C3A1F02494F00748DBF /* ALADJumpCache.m */; };
+		3DB35C401F02494F00748DBF /* ALADJumpDowLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C3C1F02494F00748DBF /* ALADJumpDowLoader.m */; };
+		3DB35C411F02494F00748DBF /* NSString+ALADJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C3E1F02494F00748DBF /* NSString+ALADJump.m */; };
 		B18DE5B07625F427FB2EC90A /* libPods-ALADJumpDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF77F29167F6AC7A0BFD9A5 /* libPods-ALADJumpDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +82,12 @@
 		3DA147AA1EF38F4B00B0B3F1 /* XHLaunchAdCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdCache.m; sourceTree = "<group>"; };
 		3DAFC9B41EF3B04100DCC69D /* XHLaunchAdImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdImage.h; sourceTree = "<group>"; };
 		3DAFC9B51EF3B04100DCC69D /* XHLaunchAdImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdImage.m; sourceTree = "<group>"; };
+		3DB35C391F02494F00748DBF /* ALADJumpCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpCache.h; sourceTree = "<group>"; };
+		3DB35C3A1F02494F00748DBF /* ALADJumpCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpCache.m; sourceTree = "<group>"; };
+		3DB35C3B1F02494F00748DBF /* ALADJumpDowLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpDowLoader.h; sourceTree = "<group>"; };
+		3DB35C3C1F02494F00748DBF /* ALADJumpDowLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpDowLoader.m; sourceTree = "<group>"; };
+		3DB35C3D1F02494F00748DBF /* NSString+ALADJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ALADJump.h"; sourceTree = "<group>"; };
+		3DB35C3E1F02494F00748DBF /* NSString+ALADJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ALADJump.m"; sourceTree = "<group>"; };
 		7EF77F29167F6AC7A0BFD9A5 /* libPods-ALADJumpDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ALADJumpDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		888A067552C979A9D7BD22C6 /* Pods-ALADJumpDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALADJumpDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ALADJumpDemo/Pods-ALADJumpDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +205,12 @@
 				3D26DF511E5D6DFD00C8EA72 /* ALADJumpConstant.m */,
 				3D26DF5C1E5D7C6600C8EA72 /* ALADDefineHeader.h */,
 				3D26DF411E5D660400C8EA72 /* ALADJumEnum.h */,
+				3DB35C391F02494F00748DBF /* ALADJumpCache.h */,
+				3DB35C3A1F02494F00748DBF /* ALADJumpCache.m */,
+				3DB35C3B1F02494F00748DBF /* ALADJumpDowLoader.h */,
+				3DB35C3C1F02494F00748DBF /* ALADJumpDowLoader.m */,
+				3DB35C3D1F02494F00748DBF /* NSString+ALADJump.h */,
+				3DB35C3E1F02494F00748DBF /* NSString+ALADJump.m */,
 			);
 			path = ALADJumpManager;
 			sourceTree = "<group>";
@@ -282,7 +297,7 @@
 		3D26DF021E5D65B500C8EA72 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = liyongfang;
 				TargetAttributes = {
 					3D26DF091E5D65B500C8EA72 = {
@@ -401,6 +416,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D26DF151E5D65B500C8EA72 /* ViewController.m in Sources */,
+				3DB35C3F1F02494F00748DBF /* ALADJumpCache.m in Sources */,
+				3DB35C411F02494F00748DBF /* NSString+ALADJump.m in Sources */,
 				3DA147A51EF38EA700B0B3F1 /* XHLaunchAdDownloader.m in Sources */,
 				3D26DF481E5D660400C8EA72 /* ALADJumpManager.m in Sources */,
 				3D26DF121E5D65B500C8EA72 /* AppDelegate.m in Sources */,
@@ -410,6 +427,7 @@
 				3DA147AB1EF38F4B00B0B3F1 /* XHLaunchAdCache.m in Sources */,
 				3DA147A81EF38F2C00B0B3F1 /* NSString+XHLaunchAd.m in Sources */,
 				3D26DF521E5D6DFD00C8EA72 /* ALADJumpConstant.m in Sources */,
+				3DB35C401F02494F00748DBF /* ALADJumpDowLoader.m in Sources */,
 				3D26DF551E5D71FB00C8EA72 /* ADvertisementManager.m in Sources */,
 				3DAFC9B61EF3B04100DCC69D /* XHLaunchAdImage.m in Sources */,
 			);
@@ -465,12 +483,14 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -513,12 +533,14 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -545,6 +567,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9J4Y7YNRRQ;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = ALADJumpDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -561,6 +584,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9J4Y7YNRRQ;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = ALADJumpDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

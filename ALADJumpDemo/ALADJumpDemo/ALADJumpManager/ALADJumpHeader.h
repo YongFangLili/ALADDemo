@@ -10,5 +10,6 @@
 #import "ALADJumpManager.h"
 #import "ALADJumpConstant.h"
 #import "ALADDefineHeader.h"
+#import "ALADJumpCache.h"
 
 #endif /* ALADJumpHeader_h */

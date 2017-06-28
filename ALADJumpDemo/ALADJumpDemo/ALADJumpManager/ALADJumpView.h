@@ -32,7 +32,10 @@
 
 @interface ALADJumpView : UIWindow
 /** ad数据 */
-@property (nonatomic, strong) NSDictionary *adDic;
+//@property (nonatomic, strong) NSDictionary *adDic;
+@property (nonatomic, strong) UIImage *adImage;
+@property (nonatomic, copy) NSString *linkUrl;
+@property (nonatomic, assign) NSInteger adContineTime;
 /**记录当前的秒数*/
 @property (nonatomic,assign) NSInteger  count;
 /**存放图片文件路径*/

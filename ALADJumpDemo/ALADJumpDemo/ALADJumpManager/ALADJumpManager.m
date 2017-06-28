@@ -9,8 +9,8 @@
 #import "ALADJumpManager.h"
 #import "ALADJumpView.h"
 #import "ALADDefineHeader.h"
-#import "XHLaunchAdDownloader.h"
-
+#import "ALADJumpCache.h"
+#import "ALADJumpDowLoader.h"
 //静态图
 #define imageURL1 @"http://c.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b78c4e5d703d162d9f2d3c934.jpg"
 #define imageURL2 @"http://d.hiphotos.baidu.com/image/pic/item/f7246b600c3387444834846f580fd9f9d72aa034.jpg"
@@ -30,6 +30,7 @@
 #define videoURL2  @"http://120.25.226.186:32812/resources/videos/minion_01.mp4"
 #define videoURL3 @"http://ohnzw6ag6.bkt.clouddn.com/video1.mp4"
 
+
 @interface ALADJumpManager()<ALADJumpViewDelegate>
 
 /** 上一次保存的模型数据 */
@@ -44,16 +45,19 @@
 /** 自定义Button */
 @property (nonatomic, strong) UIButton *customerButton;
 
+/** 当前的需要展示的广告Index */
+@property (nonatomic, assign) NSInteger currentIndex;
+
+/** 图片数组 */
+@property (nonatomic, strong) NSArray *imageUrlArray;
+
+/** 广告跳转链接数组 */
+@property (nonatomic, strong) NSArray *linkUrlArray;
+
+
 @end
 
 @implementation ALADJumpManager
-
-// downLoadText
-- (void)dowLoadImagesArrays {
-    
-    [[XHLaunchAdDownloader sharedDownloader] downLoadImageAndCacheWithURLArray:@[[NSURL URLWithString:imageURL5],[NSURL URLWithString:imageURL6],[NSURL URLWithString:imageURL7]]];
-
-}
 
 /**
  * @brief 添加广告视图
@@ -61,29 +65,47 @@
  */
 - (void)showADJumpViewWithIsShow:(BOOL)isShow {
     
-    [self dowLoadImagesArrays];
-    
+    // 获取广告之前的数据
+    self.oldDataDic = [ALADJumpCache getADInfoDicWithFilePath:self.filePath];
+    // 获取上一次的图片数组Index
+    self.currentIndex = [self.oldDataDic[kALADImageCurrentIndex] integerValue];
+    // 获取存储的图片数组
+    self.imageUrlArray = self.oldDataDic[kALADJumpImageUrlArraysKey];
+    // 获取存储的linkURL数组
+    self.linkUrlArray = self.oldDataDic[kALADJumpLinkUrlArraysKey];
+    // 获取当前需要显示的imageUrl
+    NSString *imageUrl = self.imageUrlArray[self.currentIndex];
+    // 获取需要显示的adImage
+    UIImage *adImage = [ALADJumpCache getCacheImageWithURL:[NSURL URLWithString:imageUrl] WithFilePath:self.filePath];
+    NSString *imageLinkUrl;
+    // 获取当前需要显示的广告链接
+    if (self.currentIndex >= self.linkUrlArray.count) {
+        imageLinkUrl = @"";
+    }else {
+         imageLinkUrl = self.linkUrlArray[self.currentIndex];
+    }
+    // 获取广告的持续时间
+    NSInteger contuneTime = [self.oldDataDic[kALADJumpContinueTimeKey] integerValue];
+    // 广告是否已经无效
+    BOOL isValid = [[self.oldDataDic objectForKey:kALADJumpIsShowKey] boolValue];
+
+    // 显示广告
+    if (isShow && adImage && isValid && imageUrl ) {
+        
+        ALADJumpView *adJumpView = [[ALADJumpView alloc] initAdJumpViewFrame:CGRectMake(0, 0,kALAD_PHONE_WIDTH , kALAD_PHONE_HEIGH) andWithAppType:self.appType  withDataDic:self.oldDataDic withCustomerButton:self.customerButton ];
+        adJumpView.adContineTime = contuneTime;
+        adJumpView.adImage = adImage;
+        adJumpView.linkUrl = imageLinkUrl;
+        adJumpView.delegate = self;
+        [adJumpView showAD];
+        NSLog(@"~~~~~~~第%zd张广告",self.currentIndex);
+    }
+
+    // 通知代理去下载最近的广告数据
     if (self.delegate && [self.delegate respondsToSelector:@selector(ALADJumpUpdateALADData:)]) {
         [self.delegate ALADJumpUpdateALADData:self];
     }
     
-    // 视图能在view上显示    置于后台时间没有超时  并且后台允许显示广告  文件里有没有图片
-    self.oldDataDic = [self getADInfoDataWithFilePath:self.filePath];
-    UIImage *image = [self getADImageDataWithFilePath:self.filePath];
-    if (!self.oldDataDic || ![[self.oldDataDic objectForKey:kALADJumpIsShowKey] boolValue] || !image) {
-        return;
-    }
-    // 判断是否显示广告
-    if (isShow ) {
-        
-        if ([self.oldDataDic objectForKey:kALADJumpImageUrlKey]!= nil) {
-            // 显示广告图片
-            ALADJumpView *adJumpView = [[ALADJumpView alloc] initAdJumpViewFrame:CGRectMake(0, 0,kPHONE_WIDTH , kPHONE_HEIGH) andWithAppType:self.appType  withDataDic:self.oldDataDic withCustomerButton:self.customerButton ];
-            adJumpView.filePath = [self getFilePathWithPath:_filePath withFileName:kAdImageDataName];
-            adJumpView.delegate = self;
-            [adJumpView showAD];
-        }
-    }
 }
 
 /**
@@ -100,7 +122,7 @@
     if (self = [super init]) {
         _filePath = filePath;
         _appType = appType;
-        _oldDataDic = [self getADInfoDataWithFilePath:_filePath];
+        _oldDataDic = [ALADJumpCache getADInfoDicWithFilePath:filePath];
         self.customerButton = customeButton;
     }
     return self;
@@ -125,121 +147,49 @@
  */
 - (void)handleDataWithDic:(NSDictionary *)dic {
     
-    // 图片不一样重新下载图片
-    if (dic[kALADJumpLinkUrlKey] == nil || ![[dic objectForKey:kALADJumpImageUrlKey] isEqualToString:[self.oldDataDic objectForKey:kALADJumpImageUrlKey]]) {
-        // 异步下载图片
-        [self downloadADImageWithDataDic:dic];
-    }
-}
-
-/**
- * @brief 图片下载
- * @param dic 广告数据
- */
-- (void)downloadADImageWithDataDic:(NSDictionary *)dic {
     
-    NSString *imageUrl = [dic objectForKey:kALADJumpImageUrlKey];
-    NSURL *url = [NSURL URLWithString: [dic objectForKey:kALADJumpImageUrlKey]];
-    if (imageUrl && imageUrl.length > 0 && url) {
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            //下载数据
-            NSError *error = nil;
-            NSData *data= [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:&error];
-            UIImage * image = [UIImage imageWithData:data];
-            BOOL ret = [UIImagePNGRepresentation(image) writeToFile:[self getFilePathWithPath:self.filePath withFileName:kAdImageDataName] atomically:YES];
-            if (ret) {
-                [self saveAdInfoDataWithData:dic];
-                NSLog(@"写入图片成功");
-            }else {
-                [self deleteOldImageDataWithFilePath:self.filePath];
-            }
-        });
-    }else {
-        [self deleteOldImageDataWithFilePath:self.filePath];
-    }
-}
-
-/**
- *  @brief  判断该路径是否存在文件
- *  @param  filePath 路径
- *  @return BOOL
- */
-- (BOOL)isFileExistWithFilePath:(NSString *) filePath {
-    
-    NSFileManager * fileManager = [NSFileManager defaultManager];
-    BOOL isDirectory = NO;
-    return [fileManager fileExistsAtPath:filePath isDirectory:&isDirectory];
-}
-
-
-/**
- * @brief 获取缓存路径
- * @return 返回缓存路径
- */
-- (NSString*)getFilePathWithPath:(NSString *)path withFileName:(NSString *)fileName {
-
-    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        [[NSFileManager defaultManager] createDirectoryAtPath:path
-                                  withIntermediateDirectories:YES
-                                                   attributes:nil
-                                                        error:nil];
-    }
-    NSString *filePath = [path stringByAppendingPathComponent:fileName];
-    return filePath;
-}
-
-/**
- * @brief 归档方法保存数据信息
- * @param dic 保存基本信息
- */
-- (void)saveAdInfoDataWithData:(NSDictionary *)dic {
-    
-    if (dic == nil) {
+    BOOL isUpdate = NO;
+    // 如果图片数组为0，并且广告无效，移除数组
+    NSArray *newImageUrlArray = [dic objectForKey:kALADJumpImageUrlArraysKey];
+    if ( newImageUrlArray.count == 0 || ![[dic objectForKey:kALADJumpIsShowKey] boolValue]) {
+        [ALADJumpCache clearADdiskCacheWithFilePath:self.filePath];
         return;
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        BOOL isSucecess =  [dic writeToFile:[self getFilePathWithPath:self.filePath withFileName:kAdInfoDataName] atomically:YES];
-        if (isSucecess) {
-            NSLog(@"保存成功");
-        }else {
-            NSLog(@"保存失败");
+    
+    if (self.imageUrlArray.count != newImageUrlArray.count) {
+        isUpdate = YES;
+    }else {// 循环遍历是否已经更新了广告
+        for (int i = 0; i < newImageUrlArray.count; i++) {
+            if (![self.imageUrlArray[i] isEqualToString:newImageUrlArray[i]]) {
+                isUpdate = YES;
+                break;
+            }else {
+                isUpdate = NO;
+            }
         }
-    });
-}
-
-/**
- * @brief  从沙盒中获取图片image
- * @param  filePath 文件路径
- * @return 广告图片数据
- */
-- (UIImage *)getADImageDataWithFilePath:(NSString *)filePath{
-    
-    return [UIImage imageWithContentsOfFile:[self getFilePathWithPath:filePath withFileName:kAdImageDataName]];
-}
-
-/**
- * @brief  从沙盒中获取广告数据
- * @param  filePath 文件路径
- * @return 广告数据
- */
-- (NSDictionary *)getADInfoDataWithFilePath:(NSString *)filePath {
-    
-    return [NSDictionary dictionaryWithContentsOfFile:[self getFilePathWithPath:filePath withFileName:kAdInfoDataName]];
-}
-
-/**
- * @brief 删除imageData
- * @param filePath 文件路径
- */
-- (void)deleteOldImageDataWithFilePath:(NSString *)filePath {
-    
-    NSFileManager * fileManager = [NSFileManager defaultManager];
-    if ([self isFileExistWithFilePath:filePath]) {
-        [fileManager removeItemAtPath:filePath error:nil];
     }
+    
+    if (isUpdate) {
+        // 设置currentIndex的值
+        [dic setValue:@(0) forKey:kALADImageCurrentIndex];
+        // 删除之前的
+        [ALADJumpCache clearADdiskCacheWithFilePath:self.filePath];
+        [ALADJumpCache async_saveAdInfoDic:dic withFilePath:self.filePath];
+        
+    }else { // 如果没有更新，增加index值
+        self.currentIndex += 1;
+        if (self.currentIndex >= self.imageUrlArray.count) {
+            self.currentIndex = 0;
+        }
+        [self.oldDataDic setValue:@(self.currentIndex) forKey:kALADImageCurrentIndex];
+         [ALADJumpCache async_saveAdInfoDic:self.oldDataDic withFilePath:self.filePath];
+    }
+    
+    // 下载新的image / 下载没有下载成功的image
+    [[ALADJumpDowLoader sharedDownloader] downLoadImageAndCacheWithURLArray:newImageUrlArray withFilePath:self.filePath];
 
 }
+
 
 #pragma mark -delegate
 /**
@@ -282,11 +232,11 @@
 - (NSDictionary*)handleDefaultAdParameWithParame:(NSDictionary *)paramDic {
     
     if (![paramDic objectForKey:kALADJumpContinueTimeKey]) {
-        [paramDic setValue:@(kDefaultTimeContineAd) forKey:kALADJumpContinueTimeKey];
+        [paramDic setValue:@(kALAD_DefaultTimeContineAd) forKey:kALADJumpContinueTimeKey];
     }
     
     if (![paramDic objectForKey:kALADAppInBackgroundTimeKey]) {
-        [paramDic setValue:@(kDefaultTimeBackgroud) forKey:kALADAppInBackgroundTimeKey];
+        [paramDic setValue:@(kALAD_DefaultTimeBackgroud) forKey:kALADAppInBackgroundTimeKey];
     }
     
     if (![paramDic objectForKey:kALADJumpIsShowKey]) {
@@ -301,10 +251,6 @@
     
     // 默认值处理
     _adParam = [self handleDefaultAdParameWithParame:adParam];
-    if (![[adParam objectForKey:kALADJumpIsShowKey] boolValue]) {
-        [self deleteOldImageDataWithFilePath:self.filePath];
-        return;
-    }
     [self handleDataWithDic:adParam];
 }
 

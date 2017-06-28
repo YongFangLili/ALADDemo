@@ -8,19 +8,19 @@
 
 #import "XHLaunchAdCache.h"
 #import "NSString+XHLaunchAd.h"
-//#import "XHLaunchAdImage.h"
+#import "XHLaunchAdImage.h"
 
 static NSString *const key_cacheImageUrlString = @"xhLaunchAd_key_cacheImageUrlString";
 static NSString *const key_cacheVideoUrlString = @"xhLaunchAd_key_cacheVideoUrlString";
 
 @implementation XHLaunchAdCache
 
-//+(UIImage *)getCacheImageWithURL:(NSURL *)url
-//{
-//    if(url==nil) return nil;
-//    NSData *data = [NSData dataWithContentsOfFile:[self imagePathWithURL:url]];
-//    return [XHLaunchAdImage imageWithData:data];
-//}
++(UIImage *)getCacheImageWithURL:(NSURL *)url
+{
+    if(url==nil) return nil;
+    NSData *data = [NSData dataWithContentsOfFile:[self imagePathWithURL:url]];
+    return [XHLaunchAdImage imageWithData:data];
+}
 +(NSData *)getCacheImageDataWithURL:(NSURL *)url
 {
     if(url==nil) return nil;
@@ -32,9 +32,9 @@ static NSString *const key_cacheVideoUrlString = @"xhLaunchAd_key_cacheVideoUrlS
     if (data) {
         BOOL isOk = [[NSFileManager defaultManager] createFileAtPath:path contents:data attributes:nil];
 
-        if (!isOk) NSLog(@"cache file error for URL: %@", url);
         
-        return isOk;
+        
+        
     }
     return NO;
 }

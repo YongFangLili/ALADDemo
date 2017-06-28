@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-NSString * const kALADJumpImageUrlKey        = @"ALADJumpImageUrl";
-NSString * const kALADJumpImageUrlArraysKey  = @"ALADJumpImageUrlArrays";
-NSString * const kALADJumpLinkUrlKey         = @"ALADJumpLinkUrl";
+NSString * const kALADJumpImageUrlArraysKey  = @"ALADJumpImageUrlArraysKey";
+NSString * const kALADJumpLinkUrlArraysKey    = @"ALADJumpLinkUrlArraysKey";
 NSString * const kALADJumpContinueTimeKey    = @"ALADJumpContinueTime";
 NSString * const kALADAppInBackgroundTimeKey = @"ALADAppInBackgroundTime";
 NSString * const kALADJumpIsShowKey          = @"ALADJumpIsShow";
+NSString * const kALADImageCurrentIndex      = @"ALADImageCurrentIndex";
 NSString * const kAdImageDataName            = @"adImageDataName";
 NSString * const kAdInfoDataName             = @"adInfoDataName.plist";
+
 
 
 

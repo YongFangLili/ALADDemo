@@ -78,25 +78,25 @@
  */
 - (void)showADJumpViewWithIsShow:(BOOL)isShow;
 
-/**
- * @brief  从沙盒中获取图片image
- * @param  filePath 文件路径
- * @return 广告图片数据
- */
-- (UIImage *)getADImageDataWithFilePath:(NSString *)filePath;
-
-/**
- * @brief  从沙盒中获取广告数据
- * @param  filePath 文件路径
- * @return 广告数据
- */
-- (NSDictionary *)getADInfoDataWithFilePath:(NSString *)filePath;
-
-/**
- * @brief 删除imageData
- * @param filePath 文件路径
- */
-- (void)deleteOldImageDataWithFilePath:(NSString *)filePath;
-
+///**
+// * @brief  从沙盒中获取图片image
+// * @param  filePath 文件路径
+// * @return 广告图片数据
+// */
+//- (UIImage *)getADImageDataWithFilePath:(NSString *)filePath;
+//
+///**
+// * @brief  从沙盒中获取广告数据
+// * @param  filePath 文件路径
+// * @return 广告数据
+// */
+////- (NSDictionary *)getADInfoDataWithFilePath:(NSString *)filePath;
+//
+///**
+// * @brief 删除imageData
+// * @param filePath 文件路径
+// */
+//- (void)deleteOldImageDataWithFilePath:(NSString *)filePath;
+//
 
 @end

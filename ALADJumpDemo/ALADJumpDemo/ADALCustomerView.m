@@ -55,12 +55,11 @@ static  CGFloat const btnHeight = 30.0f;
  */
 - (BOOL)isShowAd {
     
-    NSDictionary *dic = [self.adManager getADInfoDataWithFilePath:kadImagePath];
-    UIImage *adImage = [self.adManager getADImageDataWithFilePath:kadImagePath];
-    if (dic[kALADJumpIsShowKey] && dic[kALADJumpImageUrlKey] && adImage) {
-        self.imgVAD.image = adImage;
-        return YES;
-    }
+   
+//    if (dic[kALADJumpIsShowKey] && dic[kALADJumpImageUrlKey] && adImage) {
+//        self.imgVAD.image = adImage;
+//        return YES;
+//    }
     return NO;
 }
 
@@ -76,8 +75,8 @@ static  CGFloat const btnHeight = 30.0f;
     NSInteger appInBackgroundTime = 3;
     NSMutableDictionary *adDic = [NSMutableDictionary dictionary];
     
-    [adDic setObject:adImageUrl forKey:kALADJumpImageUrlKey];
-    [adDic setObject:linkUrl forKey:kALADJumpLinkUrlKey];
+//    [adDic setObject:adImageUrl forKey:kALADJumpImageUrlKey];
+//    [adDic setObject:linkUrl forKey:kALADJumpLinkUrlKey];
     [adDic setValue:@(adContitueTime) forKey:kALADJumpContinueTimeKey];
     [adDic setValue:@(appInBackgroundTime) forKey:kALADAppInBackgroundTimeKey];
     [adDic setObject:@(YES) forKey:kALADJumpIsShowKey];

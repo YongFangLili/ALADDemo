@@ -9,6 +9,7 @@
 #import "ALADJumpView.h"
 #import "ALADJumpManager.h"
 #import "ALADDefineHeader.h"
+#import "ALADJumpCache.h"
 
 @interface ALADJumpView()
 /** 广告图片 */
@@ -36,7 +37,7 @@
         self.backgroundColor = [UIColor whiteColor];
         // 设置window的优先级 比状态栏低一级
         self.windowLevel = UIWindowLevelStatusBar -1;
-        _adDic = dataDic;
+//        _adDic = dataDic;
         if (customerButton) {
             _customerButton = customerButton;
         }else{
@@ -55,26 +56,29 @@
     
     // imageView
     if (appType == eALADAllimd) {
-        UIImageView *botomView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kPHONE_WIDTH, kPHONE_HEIGH)];
+        UIImageView *botomView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kALAD_PHONE_WIDTH, kALAD_PHONE_HEIGH)];
         [self addSubview:botomView];
         botomView.image = [UIImage imageNamed:@"ad_backgroundImage"];
         [self addSubview:self.adImageView];
-        self.adImageView.frame = CGRectMake(0, 0, kPHONE_WIDTH, 527 * kScreenScaleHeight);
+        self.adImageView.frame = CGRectMake(0, 0, kALAD_PHONE_WIDTH, 527 * kALAD_ScreenScaleHeight);
     }else {
         [self addSubview:self.adImageView];
-        self.adImageView.frame = CGRectMake(0, 0, kPHONE_WIDTH, kPHONE_HEIGH);
+        self.adImageView.frame = CGRectMake(0, 0, kALAD_PHONE_WIDTH, kALAD_PHONE_HEIGH);
     }
     [self addSubview:self.timerButton];
-    [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",[[self.adDic objectForKey:kALADJumpContinueTimeKey] integerValue]] forState:UIControlStateNormal];
+    [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",self.adContineTime] forState:UIControlStateNormal];
     
 }
+
+
 
 /**
  * @brief 显示广告到window上
  */
 - (void)showAD {
     
-    self.adImageView.image = [UIImage imageWithContentsOfFile:self.filePath];
+     [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",self.adContineTime] forState:UIControlStateNormal];
+    self.adImageView.image = self.adImage;
     [self makeKeyAndVisible];
     if (self.delegate && [self.delegate respondsToSelector:@selector(adJumpViewWillAppear)]) {
         [self.delegate adJumpViewWillAppear];
@@ -88,11 +92,11 @@
  */
 - (void)handleJumpUrl {
     
-    if (self.adDic[kALADJumpLinkUrlKey] == nil) {
+    if (self.linkUrl == nil) {
         return;
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(adJumpImageViewDidClick:)]) {
-        [self.delegate adJumpImageViewDidClick:self.adDic[kALADJumpLinkUrlKey]];
+        [self.delegate adJumpImageViewDidClick:self.linkUrl];
     }
     [self dismissAD];
 }
@@ -103,10 +107,10 @@
 - (void)startTimer {
     
     // 默认为3秒
-    NSInteger time = [self.adDic[kALADJumpContinueTimeKey] integerValue];
-    _count = time ? time : kDefaultTimeContineAd;
+    NSInteger time = self.adContineTime;
+    _count = time ? time : kALAD_DefaultTimeContineAd;
     if (_count == 0) {
-        _count = kDefaultTimeContineAd;
+        _count = kALAD_DefaultTimeContineAd;
     }
     [[NSRunLoop mainRunLoop] addTimer:self.countTimer forMode:NSRunLoopCommonModes];
 }
@@ -175,10 +179,10 @@
             _timerButton = [[UIButton alloc] init];
              _timerButton.layer.cornerRadius = 2.0;
             _timerButton.layer.masksToBounds = YES;
-            [_timerButton setTitleColor:kRGBACOLOR(98, 111, 140, 1) forState:UIControlStateNormal];
-            [_timerButton setBackgroundColor:kRGBACOLOR(240, 245, 248, 0.7)];
-            CGSize buttonSize = CGSizeMake( 55.0 * kScreenScaleWidth, 25 * kScreenScaleHeight);
-            _timerButton.frame = CGRectMake(kPHONE_WIDTH-buttonSize.width -17 * kScreenScaleWidth, 22 * kScreenScaleHeight, buttonSize.width, buttonSize.height);
+            [_timerButton setTitleColor:kALAD_RGBACOLOR(98, 111, 140, 1) forState:UIControlStateNormal];
+            [_timerButton setBackgroundColor:kALAD_RGBACOLOR(240, 245, 248, 0.7)];
+            CGSize buttonSize = CGSizeMake( 55.0 * kALAD_ScreenScaleWidth, 25 * kALAD_ScreenScaleHeight);
+            _timerButton.frame = CGRectMake(kALAD_PHONE_WIDTH-buttonSize.width -17 * kALAD_ScreenScaleWidth, 22 * kALAD_ScreenScaleHeight, buttonSize.width, buttonSize.height);
             [_timerButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
         }
         [_timerButton addTarget:self action:@selector(dismissAD) forControlEvents:UIControlEventTouchUpInside];
