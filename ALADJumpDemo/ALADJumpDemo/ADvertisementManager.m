@@ -18,10 +18,14 @@
 #define imageURL2 @"http://d.hiphotos.baidu.com/image/pic/item/f7246b600c3387444834846f580fd9f9d72aa034.jpg"
 #define imageURL3 @"http://d.hiphotos.baidu.com/image/pic/item/64380cd7912397dd624a32175082b2b7d0a287f6.jpg"
 #define imageURL4 @"http://d.hiphotos.baidu.com/image/pic/item/14ce36d3d539b60071473204e150352ac75cb7f3.jpg"
-#define imageURL8 @"https://img99.allinmd.cn/ad/2017/04/26/1366_1493170365933.jpg"
-#define imageURL9 @"https://img99.allinmd.cn/ad/2017/01/22/1292_1485055213513.png"
-#define imageURL10 @"https://img99.allinmd.cn/ad/2017/03/31/1350_1490946188888.png"
-#define imageURL11 @"http://img.daimg.com/uploads/allimg/170625/3-1F625235945.jpg"
+#define imageURL8 @"http://gaopin-preview.bj.bcebos.com/133100582069.jpg"
+        //@"https://img99.allinmd.cn/ad/2017/04/26/1366_1493170365933.jpg"
+#define imageURL9 @"http://gaopin-preview.bj.bcebos.com/133100673860.jpg"
+        //@"https://img99.allinmd.cn/ad/2017/01/22/1292_1485055213513.png"
+#define imageURL10  @"http://seopic.699pic.com/photo/2016/08/26/97d2cfe5-b8f9-4cfe-ac3b-f6a945f1510e.jpg_wh1200.jpg"
+        //@"https://img99.allinmd.cn/ad/2017/03/31/1350_1490946188888.png"
+#define imageURL11 @"http://gaopin-preview.bj.bcebos.com/133200519250.jpg"
+        //@"http://img.daimg.com/uploads/allimg/170625/3-1F625235945.jpg"
 
 @interface ADvertisementManager()<ALADJumpManagerDelegate>
 @end
@@ -102,7 +106,7 @@ static id _instance;
     NSMutableDictionary *adDic = [NSMutableDictionary dictionary];
     // 上传图片的url数组
     // imageURL2,imageURL3,imageURL4,imageURL10,imageURL11,imageURL8,imageURL9,
-    NSArray *imageUrlArray = [NSArray arrayWithObjects:imageURL1,imageURL2,imageURL3,imageURL4,imageURL10,nil];
+    NSArray *imageUrlArray = [NSArray arrayWithObjects:imageURL1,imageURL2,imageURL3,imageURL4,imageURL10,imageURL11,imageURL8,imageURL9,nil];
     NSArray *linkUrlArray = [NSArray arrayWithObjects:linkUrl,linkUrl,linkUrl,linkUrl,nil, nil];
     [adDic setObject:imageUrlArray forKey:kALADJumpImageUrlArraysKey];
     [adDic setObject:linkUrlArray forKey:kALADJumpLinkUrlArraysKey];
@@ -151,7 +155,7 @@ static id _instance;
 -(void)ALADJumpViewWillDisapear:(ALADJumpManager *)manager {
     
     [self createBraouseLogRequestWithDate:[NSDate date]];
-//    self.adManager = nil;
+    self.adManager = nil;
     
 }
 
