@@ -13,14 +13,15 @@
 		3D26DF1A1E5D65B500C8EA72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D26DF191E5D65B500C8EA72 /* Assets.xcassets */; };
 		3D26DF281E5D65B500C8EA72 /* ALADJumpDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF271E5D65B500C8EA72 /* ALADJumpDemoTests.m */; };
 		3D26DF331E5D65B500C8EA72 /* ALADJumpDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF321E5D65B500C8EA72 /* ALADJumpDemoUITests.m */; };
-		3D26DF481E5D660400C8EA72 /* ALADJumpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF431E5D660400C8EA72 /* ALADJumpManager.m */; };
-		3D26DF491E5D660400C8EA72 /* ALADJumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF451E5D660400C8EA72 /* ALADJumpView.m */; };
-		3D26DF521E5D6DFD00C8EA72 /* ALADJumpConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF511E5D6DFD00C8EA72 /* ALADJumpConstant.m */; };
 		3D26DF551E5D71FB00C8EA72 /* ADvertisementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D26DF541E5D71FB00C8EA72 /* ADvertisementManager.m */; };
 		3D492C911E60397B0007022A /* ADALCustomerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D492C901E60397B0007022A /* ADALCustomerView.m */; };
-		3DB35C3F1F02494F00748DBF /* ALADJumpCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C3A1F02494F00748DBF /* ALADJumpCache.m */; };
-		3DB35C401F02494F00748DBF /* ALADJumpDowLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C3C1F02494F00748DBF /* ALADJumpDowLoader.m */; };
-		3DB35C411F02494F00748DBF /* NSString+ALADJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB35C3E1F02494F00748DBF /* NSString+ALADJump.m */; };
+		3D9BFFC91F0A2295007E3F1A /* ALADJumpCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFFBD1F0A2295007E3F1A /* ALADJumpCache.m */; };
+		3D9BFFCA1F0A2295007E3F1A /* ALADJumpConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFFBF1F0A2295007E3F1A /* ALADJumpConstant.m */; };
+		3D9BFFCB1F0A2295007E3F1A /* ALADJumpDowLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFFC11F0A2295007E3F1A /* ALADJumpDowLoader.m */; };
+		3D9BFFCC1F0A2295007E3F1A /* ALADJumpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFFC41F0A2295007E3F1A /* ALADJumpManager.m */; };
+		3D9BFFCD1F0A2295007E3F1A /* ALADJumpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFFC61F0A2295007E3F1A /* ALADJumpView.m */; };
+		3D9BFFCE1F0A2295007E3F1A /* NSString+ALADJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFFC81F0A2295007E3F1A /* NSString+ALADJump.m */; };
+		3D9BFFD11F0A2376007E3F1A /* ALADJumpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFFD01F0A2376007E3F1A /* ALADJumpViewController.m */; };
 		B18DE5B07625F427FB2EC90A /* libPods-ALADJumpDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF77F29167F6AC7A0BFD9A5 /* libPods-ALADJumpDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -57,25 +58,27 @@
 		3D26DF2E1E5D65B500C8EA72 /* ALADJumpDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALADJumpDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D26DF321E5D65B500C8EA72 /* ALADJumpDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALADJumpDemoUITests.m; sourceTree = "<group>"; };
 		3D26DF341E5D65B500C8EA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D26DF411E5D660400C8EA72 /* ALADJumEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumEnum.h; sourceTree = "<group>"; };
-		3D26DF421E5D660400C8EA72 /* ALADJumpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpManager.h; sourceTree = "<group>"; };
-		3D26DF431E5D660400C8EA72 /* ALADJumpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpManager.m; sourceTree = "<group>"; };
-		3D26DF441E5D660400C8EA72 /* ALADJumpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpView.h; sourceTree = "<group>"; };
-		3D26DF451E5D660400C8EA72 /* ALADJumpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpView.m; sourceTree = "<group>"; };
-		3D26DF4B1E5D668B00C8EA72 /* ALADJumpHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALADJumpHeader.h; sourceTree = "<group>"; };
-		3D26DF4D1E5D6A6100C8EA72 /* ALADJumpConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALADJumpConstant.h; sourceTree = "<group>"; };
-		3D26DF511E5D6DFD00C8EA72 /* ALADJumpConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpConstant.m; sourceTree = "<group>"; };
 		3D26DF531E5D71FB00C8EA72 /* ADvertisementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADvertisementManager.h; sourceTree = "<group>"; };
 		3D26DF541E5D71FB00C8EA72 /* ADvertisementManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADvertisementManager.m; sourceTree = "<group>"; };
-		3D26DF5C1E5D7C6600C8EA72 /* ALADDefineHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALADDefineHeader.h; sourceTree = "<group>"; };
 		3D492C8F1E60397B0007022A /* ADALCustomerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADALCustomerView.h; sourceTree = "<group>"; };
 		3D492C901E60397B0007022A /* ADALCustomerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADALCustomerView.m; sourceTree = "<group>"; };
-		3DB35C391F02494F00748DBF /* ALADJumpCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpCache.h; sourceTree = "<group>"; };
-		3DB35C3A1F02494F00748DBF /* ALADJumpCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpCache.m; sourceTree = "<group>"; };
-		3DB35C3B1F02494F00748DBF /* ALADJumpDowLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpDowLoader.h; sourceTree = "<group>"; };
-		3DB35C3C1F02494F00748DBF /* ALADJumpDowLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpDowLoader.m; sourceTree = "<group>"; };
-		3DB35C3D1F02494F00748DBF /* NSString+ALADJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ALADJump.h"; sourceTree = "<group>"; };
-		3DB35C3E1F02494F00748DBF /* NSString+ALADJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ALADJump.m"; sourceTree = "<group>"; };
+		3D9BFFBA1F0A2295007E3F1A /* ALADDefineHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADDefineHeader.h; sourceTree = "<group>"; };
+		3D9BFFBB1F0A2295007E3F1A /* ALADJumEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumEnum.h; sourceTree = "<group>"; };
+		3D9BFFBC1F0A2295007E3F1A /* ALADJumpCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpCache.h; sourceTree = "<group>"; };
+		3D9BFFBD1F0A2295007E3F1A /* ALADJumpCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpCache.m; sourceTree = "<group>"; };
+		3D9BFFBE1F0A2295007E3F1A /* ALADJumpConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpConstant.h; sourceTree = "<group>"; };
+		3D9BFFBF1F0A2295007E3F1A /* ALADJumpConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpConstant.m; sourceTree = "<group>"; };
+		3D9BFFC01F0A2295007E3F1A /* ALADJumpDowLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpDowLoader.h; sourceTree = "<group>"; };
+		3D9BFFC11F0A2295007E3F1A /* ALADJumpDowLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpDowLoader.m; sourceTree = "<group>"; };
+		3D9BFFC21F0A2295007E3F1A /* ALADJumpHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpHeader.h; sourceTree = "<group>"; };
+		3D9BFFC31F0A2295007E3F1A /* ALADJumpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpManager.h; sourceTree = "<group>"; };
+		3D9BFFC41F0A2295007E3F1A /* ALADJumpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpManager.m; sourceTree = "<group>"; };
+		3D9BFFC51F0A2295007E3F1A /* ALADJumpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpView.h; sourceTree = "<group>"; };
+		3D9BFFC61F0A2295007E3F1A /* ALADJumpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpView.m; sourceTree = "<group>"; };
+		3D9BFFC71F0A2295007E3F1A /* NSString+ALADJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ALADJump.h"; sourceTree = "<group>"; };
+		3D9BFFC81F0A2295007E3F1A /* NSString+ALADJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ALADJump.m"; sourceTree = "<group>"; };
+		3D9BFFCF1F0A2376007E3F1A /* ALADJumpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALADJumpViewController.h; sourceTree = "<group>"; };
+		3D9BFFD01F0A2376007E3F1A /* ALADJumpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALADJumpViewController.m; sourceTree = "<group>"; };
 		7EF77F29167F6AC7A0BFD9A5 /* libPods-ALADJumpDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ALADJumpDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		888A067552C979A9D7BD22C6 /* Pods-ALADJumpDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ALADJumpDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ALADJumpDemo/Pods-ALADJumpDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,7 +134,7 @@
 		3D26DF0C1E5D65B500C8EA72 /* ALADJumpDemo */ = {
 			isa = PBXGroup;
 			children = (
-				3D26DF401E5D660400C8EA72 /* ALADJumpManager */,
+				3D9BFFB91F0A2295007E3F1A /* ALADJumpManager */,
 				3D26DF101E5D65B500C8EA72 /* AppDelegate.h */,
 				3D26DF111E5D65B500C8EA72 /* AppDelegate.m */,
 				3D26DF131E5D65B500C8EA72 /* ViewController.h */,
@@ -173,24 +176,26 @@
 			path = ALADJumpDemoUITests;
 			sourceTree = "<group>";
 		};
-		3D26DF401E5D660400C8EA72 /* ALADJumpManager */ = {
+		3D9BFFB91F0A2295007E3F1A /* ALADJumpManager */ = {
 			isa = PBXGroup;
 			children = (
-				3D26DF4B1E5D668B00C8EA72 /* ALADJumpHeader.h */,
-				3D26DF421E5D660400C8EA72 /* ALADJumpManager.h */,
-				3D26DF431E5D660400C8EA72 /* ALADJumpManager.m */,
-				3D26DF441E5D660400C8EA72 /* ALADJumpView.h */,
-				3D26DF451E5D660400C8EA72 /* ALADJumpView.m */,
-				3D26DF4D1E5D6A6100C8EA72 /* ALADJumpConstant.h */,
-				3D26DF511E5D6DFD00C8EA72 /* ALADJumpConstant.m */,
-				3D26DF5C1E5D7C6600C8EA72 /* ALADDefineHeader.h */,
-				3D26DF411E5D660400C8EA72 /* ALADJumEnum.h */,
-				3DB35C391F02494F00748DBF /* ALADJumpCache.h */,
-				3DB35C3A1F02494F00748DBF /* ALADJumpCache.m */,
-				3DB35C3B1F02494F00748DBF /* ALADJumpDowLoader.h */,
-				3DB35C3C1F02494F00748DBF /* ALADJumpDowLoader.m */,
-				3DB35C3D1F02494F00748DBF /* NSString+ALADJump.h */,
-				3DB35C3E1F02494F00748DBF /* NSString+ALADJump.m */,
+				3D9BFFBA1F0A2295007E3F1A /* ALADDefineHeader.h */,
+				3D9BFFBB1F0A2295007E3F1A /* ALADJumEnum.h */,
+				3D9BFFBC1F0A2295007E3F1A /* ALADJumpCache.h */,
+				3D9BFFBD1F0A2295007E3F1A /* ALADJumpCache.m */,
+				3D9BFFBE1F0A2295007E3F1A /* ALADJumpConstant.h */,
+				3D9BFFBF1F0A2295007E3F1A /* ALADJumpConstant.m */,
+				3D9BFFC01F0A2295007E3F1A /* ALADJumpDowLoader.h */,
+				3D9BFFC11F0A2295007E3F1A /* ALADJumpDowLoader.m */,
+				3D9BFFC21F0A2295007E3F1A /* ALADJumpHeader.h */,
+				3D9BFFC31F0A2295007E3F1A /* ALADJumpManager.h */,
+				3D9BFFC41F0A2295007E3F1A /* ALADJumpManager.m */,
+				3D9BFFC51F0A2295007E3F1A /* ALADJumpView.h */,
+				3D9BFFC61F0A2295007E3F1A /* ALADJumpView.m */,
+				3D9BFFC71F0A2295007E3F1A /* NSString+ALADJump.h */,
+				3D9BFFC81F0A2295007E3F1A /* NSString+ALADJump.m */,
+				3D9BFFCF1F0A2376007E3F1A /* ALADJumpViewController.h */,
+				3D9BFFD01F0A2376007E3F1A /* ALADJumpViewController.m */,
 			);
 			path = ALADJumpManager;
 			sourceTree = "<group>";
@@ -396,16 +401,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D26DF151E5D65B500C8EA72 /* ViewController.m in Sources */,
-				3DB35C3F1F02494F00748DBF /* ALADJumpCache.m in Sources */,
-				3DB35C411F02494F00748DBF /* NSString+ALADJump.m in Sources */,
-				3D26DF481E5D660400C8EA72 /* ALADJumpManager.m in Sources */,
+				3D9BFFCC1F0A2295007E3F1A /* ALADJumpManager.m in Sources */,
 				3D26DF121E5D65B500C8EA72 /* AppDelegate.m in Sources */,
-				3D26DF491E5D660400C8EA72 /* ALADJumpView.m in Sources */,
+				3D9BFFC91F0A2295007E3F1A /* ALADJumpCache.m in Sources */,
+				3D9BFFD11F0A2376007E3F1A /* ALADJumpViewController.m in Sources */,
 				3D492C911E60397B0007022A /* ADALCustomerView.m in Sources */,
+				3D9BFFCE1F0A2295007E3F1A /* NSString+ALADJump.m in Sources */,
 				3D26DF0F1E5D65B500C8EA72 /* main.m in Sources */,
-				3D26DF521E5D6DFD00C8EA72 /* ALADJumpConstant.m in Sources */,
-				3DB35C401F02494F00748DBF /* ALADJumpDowLoader.m in Sources */,
+				3D9BFFCB1F0A2295007E3F1A /* ALADJumpDowLoader.m in Sources */,
 				3D26DF551E5D71FB00C8EA72 /* ADvertisementManager.m in Sources */,
+				3D9BFFCD1F0A2295007E3F1A /* ALADJumpView.m in Sources */,
+				3D9BFFCA1F0A2295007E3F1A /* ALADJumpConstant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

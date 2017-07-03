@@ -108,12 +108,13 @@ static id _instance;
     // imageURL2,imageURL3,imageURL4,imageURL10,imageURL11,imageURL8,imageURL9,
     NSArray *imageUrlArray = [NSArray arrayWithObjects:imageURL1,imageURL2,imageURL3,imageURL4,imageURL10,imageURL11,imageURL8,imageURL9,nil];
     NSArray *linkUrlArray = [NSArray arrayWithObjects:linkUrl,linkUrl,linkUrl,linkUrl,nil, nil];
-    [adDic setObject:imageUrlArray forKey:kALADJumpImageUrlArraysKey];
-    [adDic setObject:linkUrlArray forKey:kALADJumpLinkUrlArraysKey];
-    [adDic setValue:@(adContitueTime) forKey:kALADJumpContinueTimeKey];
-    [adDic setValue:@(appInBackgroundTime) forKey:kALADAppInBackgroundTimeKey];
-    [adDic setObject:@(YES) forKey:kALADJumpIsShowKey];
-    self.adManager.adParam = adDic;
+
+    self.adManager.alADImageUrlArray = imageUrlArray;
+    self.adManager.alADImageLinkArray = linkUrlArray;
+    self.adManager.alADJumpContinueTime = adContitueTime;
+    self.adManager.alADAppInBackgroundTime = 1;
+    self.adManager.alADJumpIsShow = YES;
+    [self.adManager updateALADDataInfo];
 }
 
 /**
