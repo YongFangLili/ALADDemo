@@ -94,12 +94,13 @@
 
     // 显示广告
     if (isShow && adImage && isValid && imageUrl ) {
-        
-        self.adJumpView = [[ALADJumpView alloc] initAdJumpViewFrame:CGRectMake(0, 0,kALAD_PHONE_WIDTH , kALAD_PHONE_HEIGH) andWithAppType:self.appType   withCustomerButton:self.customerButton ];
+        self.adJumpView.filePath = self.filePath;
         self.adJumpView.adContineTime = contuneTime;
         self.adJumpView.adImage = adImage;
         self.adJumpView.linkUrl = imageLinkUrl;
         self.adJumpView.delegate = self;
+        self.adJumpView.customerButton = self.customerButton;
+        self.adJumpView.appType = self.appType;
         [self.adJumpView showAD];
         NSLog(@"~~~~~~~第%zd张广告",self.currentIndex);
     }
@@ -266,6 +267,15 @@
 //    _adParam = [self handleDefaultAdParameWithParame:adParam];
 //    [self handleDataWithDic:adParam];
 //}
+
+- (ALADJumpView *)adJumpView {
+    
+    if (!_adJumpView) {
+        _adJumpView = [[ALADJumpView alloc] initWithFrame:CGRectMake(0, 0,kALAD_PHONE_WIDTH , kALAD_PHONE_HEIGH) ];//
+//                        initAdJumpViewFrame: andWithAppType:self.appType   withCustomerButton:self.customerButton ];
+    }
+    return _adJumpView;
+}
 
 - (void)dealloc {
     NSLog(@"manager dellog 了");

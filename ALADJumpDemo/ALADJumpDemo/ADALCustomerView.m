@@ -192,7 +192,7 @@ static  CGFloat const btnHeight = 30.0f;
 - (ALADJumpManager *)adManager {
     
     if (!_adManager) {
-        _adManager = [[ALADJumpManager alloc] initALADJumpCustomerViewWithFilePath:kadImagePath];
+        _adManager = [[ALADJumpManager alloc] initALADJumpCustomerViewWithFilePath:kALAD_CachPath];
     }
     return _adManager;
 }

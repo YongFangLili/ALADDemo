@@ -16,10 +16,8 @@
 #define kALAD_DefaultTimeContineAd  3
 /** 偏好设置 */
 #define kALAD_UserDefault [NSUserDefaults standardUserDefaults]
-/** 缓存沙盒dir */
-#define kCachPath    [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)\
+#define kALAD_CachPath    [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)\
 objectAtIndex:0]
-
 /** 屏幕宽 */
 #define kALAD_PHONE_WIDTH  [[UIScreen mainScreen] bounds].size.width
 /** 屏幕高 */

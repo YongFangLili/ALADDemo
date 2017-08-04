@@ -28,9 +28,9 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",self.adContineTime] forState:UIControlStateNormal];
     [self startTimer];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,14 +41,6 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    
-    [super viewWillDisappear:animated];
-    if ([self.delegate respondsToSelector:@selector(adJumpViewWillDisAppear)]) {
-        [self.delegate adJumpViewWillDisAppear];
-    }
-
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -141,10 +133,14 @@
     self.countTimer = nil;
     [UIView animateWithDuration:0.3 animations:^{
         
-        self.view.alpha = 0;
+        self.view.alpha = 1.0;
     } completion:^(BOOL finished) {
         
          [self.view.window resignKeyWindow];
+        if ([self.delegate respondsToSelector:@selector(adJumpViewWillDisAppear)]) {
+            [self.delegate adJumpViewWillDisAppear];
+        }
+
     }];
 }
 

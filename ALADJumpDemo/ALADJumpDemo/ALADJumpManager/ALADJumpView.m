@@ -14,25 +14,35 @@
 
 @interface ALADJumpView() <ALADJumpViewControllerDelegate>
 
-@property (nonatomic, strong) UIButton * customerButton;
+//@property (nonatomic, strong) UIButton * customerButton;
 
 @end
 
 @implementation ALADJumpView
 
-- (instancetype)initAdJumpViewFrame: (CGRect)frame
-                     andWithAppType: (ALADJumpAppType)appType
-                 withCustomerButton: (UIButton *)customerButton {
-
+//- (instancetype)initAdJumpViewFrame: (CGRect)frame
+//                     andWithAppType: (ALADJumpAppType)appType
+//                 withCustomerButton: (UIButton *)customerButton {
+//
+//    if (self = [super initWithFrame:frame]) {
+//        self.backgroundColor = [UIColor whiteColor];
+//        // 设置window的优先级 比状态栏低一级
+//        self.adJumpVC = [[ALADJumpViewController alloc] init];
+//        self.adJumpVC.delegate = self;
+//        self.adJumpVC.appType = appType;
+//        self.windowLevel = UIWindowLevelStatusBar -1;
+//        self.rootViewController = self.adJumpVC;
+//        self.adJumpVC.customerButton = customerButton;
+//    }
+//    return self;
+//}
+- (instancetype)initWithFrame:(CGRect)frame {
+    
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor whiteColor];
-        // 设置window的优先级 比状态栏低一级
+        self.windowLevel = UIWindowLevelStatusBar -1;
         self.adJumpVC = [[ALADJumpViewController alloc] init];
         self.adJumpVC.delegate = self;
-        self.adJumpVC.appType = appType;
-        self.windowLevel = UIWindowLevelStatusBar -1;
         self.rootViewController = self.adJumpVC;
-        self.adJumpVC.customerButton = customerButton;
     }
     return self;
 }
@@ -45,6 +55,8 @@
     self.adJumpVC.adImage = self.adImage;
     self.adJumpVC.linkUrl  = self.linkUrl;
     self.adJumpVC.adContineTime = self.adContineTime;
+    self.adJumpVC.adImage = self.adImage;
+    self.adJumpVC.appType = self.appType;
     [self makeKeyAndVisible];
 }
 
@@ -68,6 +80,7 @@
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(adJumpViewWillDisAppear)]) {
         [self.delegate adJumpViewWillDisAppear];
+        self.adJumpVC = nil;
     }
 }
 

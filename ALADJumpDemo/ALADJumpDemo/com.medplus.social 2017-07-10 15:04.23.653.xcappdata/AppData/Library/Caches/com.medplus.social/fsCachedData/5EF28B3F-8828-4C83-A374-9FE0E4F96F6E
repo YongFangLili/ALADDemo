@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>唯医-医生互动社区，医学继续教育，allinmd</title>
+    <meta name="keywords" content="医生社区，手术视频，医学文献，继续教育，医学会议直播，病例讨论，医生定考，骨科，唯医，allinmd">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+
+    <link rel="dns-prefetch" href="//comm.allinmd.cn">
+    <link rel="dns-prefetch" href="//modules.allinmd.cn">
+    <link rel="dns-prefetch" href="//plugins.allinmd.cn">
+    <link rel="dns-prefetch" href="//other.allinmd.cn">
+    <link rel="dns-prefetch" href="//scene.allinmd.cn">
+    <link rel="dns-prefetch" href="//img00.allinmd.cn">
+    <link rel="dns-prefetch" href="//img10.allinmd.cn">
+    <link rel="stylesheet" href="/dest/index/index-4824180eed.css">
+
+    <!--[if lte IE 8]>
+    <script src="/js/third-party/html5shiv.js"></script>
+    <![endif]-->
+
+    <meta name="data-alcode" content="a1">
+</head>
+
+<body data-alcode="57" >
+<!--全内容容器——mainInner-->
+<section class="al-mainInner">
+    <!-- 页头——视场景加入跳转链接 -->
+    <header class="al-header al-indexHeader">
+        <section class="al-headerContainer">
+            <ul class="al-headerTopNav" data-alcode-mod='54'>
+                <li class="active"><a href="//www.allinmd.cn">热门</a></li>
+                <li><a href="//www.allinmd.cn/pages/channel/case/case_index.html">病例</a></li>
+                <li><a href="//www.allinmd.cn/pages/channel/video/video_index.html">视频</a></li>
+                <li><a href="//www.allinmd.cn/pages/channel/conference/meeting_index.html">会议</a></li>
+                <li><a href="//www.allinmd.cn/pages/channel/doc/doc_index.html">文库</a></li>
+                <li><a href="//www.allinmd.cn/pages/channel/topic/topic_index.html">话题</a></li>
+                <li><a href="//www.allinmd.cn/html/index/fellowship/fellowship_home.html">进修</a></li>
+                <li><a href="//www.allinmd.cn/pages/channel/organization.html">组织</a></li>
+                <li><a href="//www.allinmd.cn/pages/channel/product.html">药品</a></li>
+                <li><a href="//www.allinmd.cn/pages/channel/dingkao.html">医师定考</a></li>
+            </ul>
+            <!--浏览记录：begin-->
+            <div class="al-headerSearchRecord">
+                浏览记录
+                <div class="al-browseRecordBox" data-alcode-mod='61'>
+                </div>
+            </div>
+            <!--浏览记录：end-->
+            <figure class="al-headerSearch" data-alcode-mod='74' data-alcode-item-selector="b">
+                <input type="text" />
+                <b></b>
+            </figure>
+        </section>
+    </header>
+    <!-- 主侧边栏——Logo于此放置 -->
+    <aside class="al-mainSidebar al-mainSidebarCollapse">
+        <header class="al-mainLogo">
+            <img src="//img10.allinmd.cn/v3/common/sidebar/logo.png" alt="">
+        </header>
+        <header class="al-collapseLogo">
+            <img src="//img00.allinmd.cn/v3/index/logo.png" alt="">
+        </header>
+        <section class="al-mainSidebarList">
+            <ul data-alcode-mod='52'>
+                <li class="al-mainSidebarItem active">
+                    <a href="//www.allinmd.cn">
+                        <img src="//img10.allinmd.cn/v3/common/sidebar/sidebar_index_active.png" alt="">
+                        <figcaption>首页</figcaption>
+                        <article class="al-collapseItem">
+                            <p class="al-collapseItemText">
+                            <h4>首页</h4>
+                            <p>HOME</p>
+                            </p>
+                        </article>
+                    </a>
+                </li>
+                <li class="al-mainSidebarItem">
+                    <a href="//www.allinmd.cn/pages/discover/discover_index.html">
+                        <img src="//img10.allinmd.cn/v3/common/sidebar/sidebar_find.png" alt="">
+                        <figcaption>发现</figcaption>
+                        <article class="al-collapseItem">
+                            <p class="al-collapseItemText">
+                            <h4>发现</h4>
+                            <p>DISCOVERY</p>
+                            </p>
+                        </article>
+                    </a>
+                </li>
+                <li class="al-mainSidebarItem al-release">
+                    <a href="javascript:void(0)">
+                        <img src="//img10.allinmd.cn/v3/common/sidebar/sidebar_release.png" alt="">
+                        <figcaption>发布</figcaption>
+                        <article class="al-collapseItem">
+                            <p class="al-collapseItemText">
+                            <h4>发布</h4>
+                            <p>RELEASE</p>
+                            </p>
+                        </article>
+                    </a>
+                </li>
+                <li class="al-mainSidebarItem">
+                    <a href="//www.allinmd.cn/pages/message/message_main.html">
+                        <img src="//img10.allinmd.cn/v3/common/sidebar/sidebar_msg.png" alt="">
+                        <figcaption>消息</figcaption>
+                        <article class="al-collapseItem">
+                            <p class="al-collapseItemText">
+                            <h4>消息</h4>
+                            <p>MESSAGE</p>
+                            </p>
+                        </article>
+                    </a>
+                </li>
+                <li class="al-mainSidebarItem">
+                    <a href="//www.allinmd.cn/pages/personal/personal_index.html">
+                        <img src="//img10.allinmd.cn/v3/common/sidebar/sidebar_personal.png" alt="">
+                        <figcaption>我的</figcaption>
+                        <article class="al-collapseItem">
+                            <p class="al-collapseItemText">
+                            <h4>我的</h4>
+                            <p>PROFILE</p>
+                            </p>
+                        </article>
+                    </a>
+                </li>
+            </ul>
+            <ul class="al-mainSidebarOtherList" data-alcode-mod='72'>
+                <li class="al-mainSidebarItem al-siteSwitch">
+                    <a href="javascript:void(0)">
+                        <img src="//img10.allinmd.cn/v3/common/sidebar/sidebar_siteSwitch.png" alt="">
+                        <figcaption class="ev_siteSwitchName">骨科</figcaption>
+                        <article class="al-collapseItem">
+                            <div class="al-collapseItemText">
+                                <h4 class="ev_siteSwitchName">骨科</h4>
+                                <p>SITE SWITCH</p>
+                            </div>
+                        </article>
+                    </a>
+                    <div class="al_siteSwitch_popBox">
+                        <div class="al_siteSwitch_orthopaedics"><i></i>骨科</div>
+                        <div class="al_siteSwitch_handSurgery"><i></i>手外科</div>
+                    </div>
+                </li>
+                <li class="al-mainSidebarItem al-allinmdService">
+                    <a href="javascript:void(0)">
+                        <img src="//img10.allinmd.cn/v3/common/sidebar/sidebar_cs.png" alt="">
+                        <figcaption>唯客服</figcaption>
+                        <article class="al-collapseItem">
+                            <p class="al-collapseItemText">
+                            <h4>小唯</h4>
+                            <p>SERVICE</p>
+                            </p>
+                        </article>
+                    </a>
+                </li>
+                <li class="al-mainSidebarItem">
+                    <a href="//www.allinmd.cn/pages/singlePage/iphone-app-download.html">
+                        <img src="//img10.allinmd.cn/v3/common/sidebar/sidebar_mobile.png" alt="">
+                        <figcaption>手机端</figcaption>
+                        <article class="al-collapseItem">
+                            <p class="al-collapseItemText">
+                            <h4>手机端</h4>
+                            <p>MOBILES</p>
+                            </p>
+                        </article>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <!-- 主内容容器 -->
+    <section class="al-mainIndex">
+        <!-- 主内容区域——定宽1000px margin自居中定位 -->
+        <section class="al-indexInner">
+            <!-- 页面内容区域 -->
+            <section class="al-indexMainContent">
+                <!-- 轮播banner——swiper2.7版本兼容IE10- -->
+                <section class="swiper-container al-indexCarouselBanner">
+                    <section class="swiper-wrapper ev_banner" data-alcode-mod='55'>
+                    </section>
+                    <section class="swiper-button-prev"></section>
+                    <section class="swiper-button-next"></section>
+                    <section class="al-pagination"></section>
+                </section>
+                <!-- 轮播结束 -->
+                <!-- 个性推荐 -->
+                <section class="al-recommendLinks" data-alcode-mod='56'>
+                </section>
+                <!-- 个性推荐结束 -->
+                <!-- 内容组件contentItem -->
+                <section class="al-contentItem ev_recBox" data-alcode-mod="235">
+                </section>
+
+                <div class="al-loadMoreImg" style="display:none;">
+                    <img src="//img10.allinmd.cn/loading/xubox_loading0.gif" alt=""/>
+                </div>
+            </section>
+            <!-- 登录框体区域 -->
+            <aside class="al-indexSidebar">
+                <section class="module-index-login-area" style="display:block;" data-alcode-mod='58'>
+                    <div class="index_login_l module-index-login caos v3" style="display:none;height: 414px;" data-alcode-sm="regist">
+                    </div>
+                    <!--caos登录 stop-->
+                    <!--唯医登录-->
+                    <div class="index_login_r module-index-login allin v3" data-alcode-sm="login">
+                    </div>
+                </section>
+                <aside class="al-mesMainR al-index-mesMainR" style="display:none;" data-alcode-mod='60'>
+                    <a href="javascript:void(0);" class="ev_toPersonalCenter">
+                        <img src="//img10.allinmd.cn/default-user/user_img65.png" alt="" class="ev-personalImg">
+                    </a>
+                    <a href="javascript:void(0);" class="al-mesMainR-userName ev-personalName ev_toPersonalCenter">
+                        用户名<i></i>
+                    </a>
+                    <span class="al-mesMainR-userTitle">职称</span>
+                    <p class="al-mesMainR-userUnit">工作单位</p>
+                    <ul>
+                        <li>
+                            <a href="//www.allinmd.cn/pages/personal/sns.html?action=fans" class="al-personalFollowNum al-indexPersonal"><span class="ev-fanNum">0</span><p>粉丝</p></a>
+                        </li>
+                        <li class="al-mesMain-ul_Notice">
+                            <a href="//www.allinmd.cn/pages/personal/sns.html?action=follow" class="al-personalFollowNum al-indexPersonal"><span class="ev-followNum"></span><p>关注</p></a>
+                        </li>
+                        <li>
+                            <a href="//www.allinmd.cn/pages/personal/sns.html?action=praise" class="al-personalFollowNum al-indexPersonal"><span class="ev-praiseNum">0</span><p>点赞</p></a>
+                        </li>
+                    </ul>
+                </aside>
+                <section class="al-allActive" data-alcode-mod='57'>
+                    <header class="al-allActiveTitle">
+                        <span class="ev_dynamicName">全部动态</span><!--<span><i></i>更新</span>-->
+                    </header>
+                    <section class="ev_dynamicBox">
+                    </section>
+                    <a class="al-checkFirendCircle" href="//www.allinmd.cn/pages/personal/friends_circle.html">查看更多朋友圈</a>
+                </section>
+            </aside>
+            <!-- 登录框体结束 -->
+        </section>
+    </section>
+    <!--公共底部 start-->
+    <!--#include virtual="/includes/footer.jsp"-->
+    <!--公共底部 End-->
+</section>
+<!-- 全页面结构结束 -->
+<script src="//cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script> <script>!window.jQuery && document.write(unescape("%3Cscript src='/js/lib/jquery/jquery-1.8.3.js' type='text/javascript'%3E%3C/script%3E"));</script>
+<script src="//cdn.bootcss.com/jquery-json/2.4.0/jquery.json.min.js"></script> <script>!$.toJSON && document.write(unescape("%3Cscript src='/js/lib/jquery/jquery.json-2.4.js' type='text/javascript'%3E%3C/script%3E"));</script>
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> <script>!$.cookie && document.write(unescape("%3Cscript src='/js/lib/jquery/jquery.cookie.js' type='text/javascript'%3E%3C/script%3E"));</script>
+<script src="//cdn.bootcss.com/Swiper/2.7.0/idangerous.swiper.min.js"></script> <script>(typeof Swiper == undefined) && document.write(unescape("%3Cscript src='/js/third-party/swiper2.7.js' type='text/javascript'%3E%3C/script%3E"));</script>
+<script src="//paas.allinmd.cn/modules/img_lazyload/jquery.lazyload.min.js"></script><script>!$.fn.lazyload && document.write(unescape("%3Cscript src='/js/third-party/jquery_lazyload/jquery.lazyload.js' type='text/javascript'%3E%3C/script%3E"));</script>
+<script src="//paas.allinmd.cn/modules/img_lazyload/jquery.scrollstop.js"></script><script>!$.fn.lazyload && document.write(unescape("%3Cscript src='/js/third-party/jquery_lazyload/jquery.scrollstop.js' type='text/javascript'%3E%3C/script%3E"));</script>
+<script src="/dest/index/index-e0ba28a62d.js"></script>
+
+</body>
+
+</html>

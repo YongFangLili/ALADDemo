@@ -43,22 +43,15 @@
 @property (nonatomic,assign) NSInteger  count;
 /**存放图片文件路径*/
 @property (nonatomic, copy) NSString *filePath;
+/**app类型*/
+@property (nonatomic, assign) ALADJumpAppType appType;
+/**自定义button类型*/
+@property (nonatomic, strong) UIButton *customerButton;
 /**代理*/
 @property (nonatomic, weak) id<ALADJumpViewDelegate>delegate;
-
 /** 跳转VC */
 @property (nonatomic, strong) ALADJumpViewController *adJumpVC;
 
-/**
- * @brief 创建默认的广告视图
- * @param frame 广告视图frame
- * @param appType app类型
- * @param customerButton 自定义butto
- * @return adView
- */
-- (instancetype)initAdJumpViewFrame: (CGRect)frame
-                     andWithAppType: (ALADJumpAppType)appType
-                 withCustomerButton: (UIButton *)customerButton;
 /**
  * @brief 显示广告
  */

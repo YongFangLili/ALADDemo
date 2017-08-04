@@ -11,7 +11,7 @@
 #import "ALADJumpHeader.h"
 
 /** 图片目录 */
-#define kadImagePath [kCachPath stringByAppendingPathComponent:@"AD"]
+#define kadImagePath [kALAD_CachPath stringByAppendingPathComponent:@"AD"]
 
 //静态图
 #define imageURL1 @"http://c.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b78c4e5d703d162d9f2d3c934.jpg"
@@ -26,6 +26,7 @@
         //@"https://img99.allinmd.cn/ad/2017/03/31/1350_1490946188888.png"
 #define imageURL11 @"http://gaopin-preview.bj.bcebos.com/133200519250.jpg"
         //@"http://img.daimg.com/uploads/allimg/170625/3-1F625235945.jpg"
+#define imageURL12 @"https://img99.allinmd.cn/ad/2017/07/12/1433_1499828809320.jpg"
 
 @interface ADvertisementManager()<ALADJumpManagerDelegate>
 @end
@@ -106,7 +107,7 @@ static id _instance;
     NSMutableDictionary *adDic = [NSMutableDictionary dictionary];
     // 上传图片的url数组
     // imageURL2,imageURL3,imageURL4,imageURL10,imageURL11,imageURL8,imageURL9,
-    NSArray *imageUrlArray = [NSArray arrayWithObjects:imageURL1,imageURL2,imageURL3,imageURL4,imageURL10,imageURL11,imageURL8,imageURL9,nil];
+    NSArray *imageUrlArray = [NSArray arrayWithObjects:imageURL12,imageURL2,imageURL3,imageURL4,imageURL10,imageURL11,imageURL8,imageURL9,nil];
     NSArray *linkUrlArray = [NSArray arrayWithObjects:linkUrl,linkUrl,linkUrl,linkUrl,nil, nil];
 
     self.adManager.alADImageUrlArray = imageUrlArray;

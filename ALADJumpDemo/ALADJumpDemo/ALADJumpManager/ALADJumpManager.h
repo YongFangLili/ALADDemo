@@ -61,7 +61,6 @@
 @property (nonatomic ,assign) NSInteger alADAppInBackgroundTime;
 /** 广告持续时间 */
 @property (nonatomic, assign) NSInteger alADJumpContinueTime;
-
 /** delegate */
 @property (nonatomic, weak) id<ALADJumpManagerDelegate>delegate;
 
