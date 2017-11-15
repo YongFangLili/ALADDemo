@@ -86,7 +86,7 @@
     self.totalLength = totalBytesExpectedToWrite;
     if (self.progressBlock) {
         self.progressBlock(self.totalLength, self.currentLength);
-        NSLog(@"%.2llu",self.currentLength/self.totalLength);
+//        NSLog(@"%.2llu",self.currentLength/self.totalLength);
     }
 }
 
@@ -181,11 +181,11 @@
         } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error) {
             
             if (!error) {
-                NSLog(@"下载成功");
+//                NSLog(@"下载成功");
                 // 存储数据
                 [ALADJumpCache  async_saveImageData:data imageURL:url withFilePath:filePath];
             }else {
-                NSLog(@"下载失败");
+//                NSLog(@"下载失败");
             }
         } withFilePath:filePath];
     }];

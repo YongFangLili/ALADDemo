@@ -53,7 +53,6 @@ NSString * const kADInfoDataFileName             = @"adInfoDataName.plist";
             NSLog(@"保存成功");
         }else {
             NSLog(@"保存失败");
-        
         }
     });
 }
