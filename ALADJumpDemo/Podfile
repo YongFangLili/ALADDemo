@@ -6,6 +6,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 
 target 'ALADJumpDemo' do
-pod 'SDWebImage', '~> 3.8.1'
+#pod 'SDWebImage', '~> 3.8.1'
 xcodeproj 'ALADJumpDemo'
 end

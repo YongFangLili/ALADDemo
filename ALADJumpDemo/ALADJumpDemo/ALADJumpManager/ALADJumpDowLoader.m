@@ -13,7 +13,7 @@
 
 #pragma mark -ALADJumpDownload
 @interface ALADJumpDownload()
-
+/** session */
 @property (strong, nonatomic) NSURLSession *session;
 /** dowLoadTask 下载任务 */
 @property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
@@ -31,8 +31,6 @@
 @implementation ALADJumpDownload
 
 @end
-
-
 
 #pragma mark -  ALADJumpImageDownload
 @interface ALADJumpImageDownload ()<NSURLSessionDownloadDelegate,NSURLSessionTaskDelegate>
@@ -77,8 +75,6 @@
     if ([self.delegate respondsToSelector:@selector(downloadFinishWithURL:)]) {
         [self.delegate downloadFinishWithURL:self.url];
     }
-
-    
     [self.session invalidateAndCancel];
     self.session = nil;
 }
@@ -92,7 +88,6 @@
         self.progressBlock(self.totalLength, self.currentLength);
         NSLog(@"%.2llu",self.currentLength/self.totalLength);
     }
-    
 }
 
 // 下载任务完成回调
@@ -109,7 +104,6 @@
         }
         _completedBlock = nil;
     }
-
 }
 
 //处理HTTPS请求的
@@ -125,7 +119,6 @@
 }
 
 @end
-
 
 
 #pragma mark - ALADJumpDowLoader
@@ -170,11 +163,11 @@
     imageDowLoade.delegate = self;
     // 存储下载标记
     [self.allDownloadDict setObject:imageDowLoade forKey:url.absoluteString.xh_md5String];
-
 }
 
 - (void)downLoadImageAndCacheWithURLArray:(NSArray<NSString *> *)urlArray withFilePath:(NSString *)filePath {
     
+    __weak typeof(self) weakSelf = self;
     [urlArray enumerateObjectsUsingBlock:^(NSString * _Nonnull urlString, NSUInteger idx, BOOL * _Nonnull stop) {
         
         NSURL *url = [NSURL URLWithString:urlString];
@@ -183,19 +176,16 @@
             return ;
         }
         // 开始下载
-        [self downloadImageWithURL:url progress:^(unsigned long long total, unsigned long long current) {
+        [weakSelf downloadImageWithURL:url progress:^(unsigned long long total, unsigned long long current) {
             
         } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error) {
             
             if (!error) {
                 NSLog(@"下载成功");
-                
                 // 存储数据
                 [ALADJumpCache  async_saveImageData:data imageURL:url withFilePath:filePath];
             }else {
-
                 NSLog(@"下载失败");
-            
             }
         } withFilePath:filePath];
     }];
@@ -210,15 +200,11 @@
 
 #pragma mark -lazy
 - (NSMutableDictionary *)allDownloadDict {
+    
     if (!_allDownloadDict) {
-        
         _allDownloadDict = [[NSMutableDictionary alloc] init];
     }
-    
     return _allDownloadDict;
 }
-
-
-
 
 @end

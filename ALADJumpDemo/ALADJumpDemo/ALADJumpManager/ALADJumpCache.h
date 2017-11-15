@@ -30,7 +30,6 @@
  */
 + (void)async_saveAdInfoDic:(NSDictionary *)adInfoDic withFilePath: (NSString *)filePath;
 
-
 /**
  *  获取缓存图片
  *

@@ -12,14 +12,10 @@
 
 /** 广告图片 */
 @property (nonatomic, strong) UIImageView *adImageView;
-
 /** 显示倒计时button */
 @property (nonatomic, strong) UIButton *timerButton;
-
 /** 定时器 */
 @property (nonatomic, strong) NSTimer *countTimer;
-
-
 
 @end
 
@@ -29,7 +25,7 @@
     
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",self.adContineTime] forState:UIControlStateNormal];
+    [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",(long)self.adContineTime] forState:UIControlStateNormal];
     [self startTimer];
 }
 
@@ -41,47 +37,6 @@
     }
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-
-- (void)setAppType:(ALADJumpAppType)appType {
-    
-    _appType = appType;
-    switch (appType) {
-        case eALADAllimd:
-        {
-            
-            UIImageView *botomView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kALAD_PHONE_WIDTH, kALAD_PHONE_HEIGH)];
-            [self.view addSubview:botomView];
-            botomView.image = [UIImage imageNamed:@"ad_backgroundImage"];
-            [self.view addSubview:self.adImageView];
-            self.adImageView.frame = CGRectMake(0, 0, kALAD_PHONE_WIDTH, 527 * kALAD_ScreenScaleHeight);
-        }
-            break;
-        case eALADMedPlus:
-        case eALADYding:
-        {
-            
-            [self.view addSubview:self.adImageView];
-            self.adImageView.frame = CGRectMake(0, 0, kALAD_PHONE_WIDTH, kALAD_PHONE_HEIGH);
-        }
-            break;
-        default:
-            break;
-    }
-    
-    [self.view addSubview:self.timerButton];
-    [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",self.adContineTime] forState:UIControlStateNormal];
-}
-
-- (void)setAdImage:(UIImage *)adImage {
-    
-    _adImage = adImage;
-    self.adImageView.image = adImage;
-}
 /**
  * @brief 广告跳转
  */
@@ -140,12 +95,38 @@
         if ([self.delegate respondsToSelector:@selector(adJumpViewWillDisAppear)]) {
             [self.delegate adJumpViewWillDisAppear];
         }
-
     }];
 }
 
-
 #pragma mark -getters and setters
+
+- (void)setAppType:(ALADJumpAppType)appType {
+    
+    _appType = appType;
+    switch (appType) {
+        case eALADAllimd:
+        case eALADMedPlus:
+        case eALADYding:
+        {
+            [self.view addSubview:self.adImageView];
+            self.adImageView.frame = CGRectMake(0, 0, kALAD_PHONE_WIDTH, kALAD_PHONE_HEIGH);
+        }
+            break;
+        default:
+            [self.view addSubview:self.adImageView];
+            self.adImageView.frame = CGRectMake(0, 0, kALAD_PHONE_WIDTH, kALAD_PHONE_HEIGH);
+            break;
+    }
+    
+    [self.view addSubview:self.timerButton];
+    [self.timerButton setTitle:[NSString stringWithFormat:@"跳过 %ld",(long)self.adContineTime] forState:UIControlStateNormal];
+}
+
+- (void)setAdImage:(UIImage *)adImage {
+    
+    _adImage = adImage;
+    self.adImageView.image = adImage;
+}
 - (NSTimer *)countTimer {
     
     if (_countTimer == nil) {
@@ -190,9 +171,8 @@
 
 - (void)dealloc {
     
-    [self.countTimer invalidate];
-    self.countTimer = nil;
-    NSLog(@"VC广告view dellog了");
+    [_countTimer invalidate];
+    _countTimer = nil;
 }
 
 @end

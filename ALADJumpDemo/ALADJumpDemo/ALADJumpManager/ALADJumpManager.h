@@ -75,7 +75,6 @@
                                  andWithAPPType : (ALADJumpAppType)appType
                               withCustomerButton: (UIButton *)customeButton;
 
-
 /**
  * @brief 初始化自定义广告视图.
  * 此时manager仅仅只进行数据的逻辑处理.

@@ -11,51 +11,25 @@
 #import "ALADDefineHeader.h"
 #import "ALADJumpCache.h"
 #import "ALADJumpDowLoader.h"
-//静态图
-#define imageURL1 @"http://c.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b78c4e5d703d162d9f2d3c934.jpg"
-#define imageURL2 @"http://d.hiphotos.baidu.com/image/pic/item/f7246b600c3387444834846f580fd9f9d72aa034.jpg"
-#define imageURL3 @"http://d.hiphotos.baidu.com/image/pic/item/64380cd7912397dd624a32175082b2b7d0a287f6.jpg"
-#define imageURL4 @"http://d.hiphotos.baidu.com/image/pic/item/14ce36d3d539b60071473204e150352ac75cb7f3.jpg"
-#define imageURL8 @"https://img99.allinmd.cn/ad/2017/04/26/1366_1493170365933.jpg"
-#define imageURL9 @"https://img99.allinmd.cn/ad/2017/01/22/1292_1485055213513.png"
-#define imageURL10 @"https://img99.allinmd.cn/ad/2017/03/31/1350_1490946188888.png"
-
-//动态图
-#define imageURL5 @"http://c.hiphotos.baidu.com/image/pic/item/d62a6059252dd42a6a943c180b3b5bb5c8eab8e7.jpg"
-#define imageURL6 @"http://p1.bqimg.com/567571/4ce1a4c844b09201.gif"
-#define imageURL7 @"http://p1.bqimg.com/567571/23a4bc7a285c1179.gif"
-
-//视频链接
-#define videoURL1 @"http://ohnzw6ag6.bkt.clouddn.com/video0.mp4"
-#define videoURL2  @"http://120.25.226.186:32812/resources/videos/minion_01.mp4"
-#define videoURL3 @"http://ohnzw6ag6.bkt.clouddn.com/video1.mp4"
-
 
 @interface ALADJumpManager()<ALADJumpViewDelegate>
 
 /** 上一次保存的模型数据 */
 @property (nonatomic, strong) NSDictionary *oldDataDic;
-
 /** 广告模型 */
 @property (nonatomic, assign) ALADJumpAppType appType;
-
 /** 文件路径 */
 @property (nonatomic, copy) NSString *filePath;
-
 /** 自定义Button */
 @property (nonatomic, strong) UIButton *customerButton;
-
 /** 当前的需要展示的广告Index */
 @property (nonatomic, assign) NSInteger currentIndex;
-
 /** 图片数组 */
 @property (nonatomic, strong) NSArray *imageUrlArray;
-
 /** 广告跳转链接数组 */
 @property (nonatomic, strong) NSArray *linkUrlArray;
-
+/** 广告view */
 @property (nonatomic, strong)ALADJumpView *adJumpView;
-
 
 @end
 
@@ -69,7 +43,6 @@
     
     // 获取广告之前的数据
     self.oldDataDic = [ALADJumpCache getADInfoDicWithFilePath:self.filePath];
-    
     // 获取上一次的图片数组Index
     self.currentIndex = [self.oldDataDic[kALADImageCurrentIndex] integerValue];
     // 获取存储的图片数组
@@ -102,14 +75,11 @@
         self.adJumpView.customerButton = self.customerButton;
         self.adJumpView.appType = self.appType;
         [self.adJumpView showAD];
-        NSLog(@"~~~~~~~第%zd张广告",self.currentIndex);
     }
-
     // 通知代理去下载最近的广告数据
     if (self.delegate && [self.delegate respondsToSelector:@selector(ALADJumpUpdateALADData:)]) {
         [self.delegate ALADJumpUpdateALADData:self];
     }
-    
 }
 
 /**
@@ -154,6 +124,7 @@
     BOOL isUpdate = NO;
     // 如果图片数组为0，并且广告无效，移除数组
     NSArray *newImageUrlArray = [dic objectForKey:kALADJumpImageUrlArraysKey];
+    NSArray *newLinkUrlArray = [dic objectForKey:kALADJumpLinkUrlArraysKey];
     if ( newImageUrlArray.count == 0 || ![[dic objectForKey:kALADJumpIsShowKey] boolValue]) {
         [ALADJumpCache clearADdiskCacheWithFilePath:self.filePath];
         return;
@@ -163,11 +134,22 @@
         isUpdate = YES;
     }else {// 循环遍历是否已经更新了广告
         for (int i = 0; i < newImageUrlArray.count; i++) {
+            
             if (![self.imageUrlArray[i] isEqualToString:newImageUrlArray[i]]) {
                 isUpdate = YES;
                 break;
-            }else {
+            } else {
                 isUpdate = NO;
+            }
+        }
+        if (isUpdate == NO) {
+            for (int i = 0; i < [newLinkUrlArray count]; i++) {
+                if (![self.linkUrlArray[i] isEqualToString:newLinkUrlArray[i]]) {
+                    isUpdate = YES;
+                    break;
+                } else {
+                    isUpdate = NO;
+                }
             }
         }
     }
@@ -225,28 +207,9 @@
     }
 }
 
-///**
-// * @breif 默认值处理
-// * @param paramDic 参数
-// * @return 参数
-// */
-//- (NSDictionary*)handleDefaultAdParameWithParame:(NSDictionary *)paramDic {
-//    
-//    if (![paramDic objectForKey:kALADJumpContinueTimeKey]) {
-//        [paramDic setValue:@(kALAD_DefaultTimeContineAd) forKey:kALADJumpContinueTimeKey];
-//    }
-//    
-//    if (![paramDic objectForKey:kALADAppInBackgroundTimeKey]) {
-//        [paramDic setValue:@(kALAD_DefaultTimeBackgroud) forKey:kALADAppInBackgroundTimeKey];
-//    }
-//    
-//    if (![paramDic objectForKey:kALADJumpIsShowKey]) {
-//        [paramDic setValue:@(YES) forKey:kALADJumpIsShowKey];
-//    }
-//    
-//    return paramDic;
-//}
-
+/**
+ * @brief 更新广告信息
+ */
 - (void)updateALADDataInfo {
     
     // 存储dic
@@ -256,29 +219,19 @@
     [adInfoDic setValue:@(self.alADJumpIsShow) forKey:kALADJumpIsShowKey];
     [adInfoDic setValue: @(self.alADJumpContinueTime ? self.alADJumpContinueTime : kALAD_DefaultTimeContineAd) forKey:kALADJumpContinueTimeKey];
     [adInfoDic setValue:@(self.alADAppInBackgroundTime ? self.alADAppInBackgroundTime : kALAD_DefaultTimeBackgroud) forKey:kALADAppInBackgroundTimeKey];
-    
     [self handleDataWithDic:adInfoDic];
 }
 
 #pragma mark -lazy  get set方法
-//- (void)setAdParam:(NSDictionary *)adParam {
-//    
-//    // 默认值处理
-//    _adParam = [self handleDefaultAdParameWithParame:adParam];
-//    [self handleDataWithDic:adParam];
-//}
-
 - (ALADJumpView *)adJumpView {
     
     if (!_adJumpView) {
-        _adJumpView = [[ALADJumpView alloc] initWithFrame:CGRectMake(0, 0,kALAD_PHONE_WIDTH , kALAD_PHONE_HEIGH) ];//
-//                        initAdJumpViewFrame: andWithAppType:self.appType   withCustomerButton:self.customerButton ];
+        _adJumpView = [[ALADJumpView alloc] initWithFrame:CGRectMake(0, 0,kALAD_PHONE_WIDTH , kALAD_PHONE_HEIGH) ];
     }
     return _adJumpView;
 }
 
 - (void)dealloc {
-    NSLog(@"manager dellog 了");
 }
 
 @end

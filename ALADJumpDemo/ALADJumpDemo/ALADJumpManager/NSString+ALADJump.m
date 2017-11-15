@@ -20,8 +20,8 @@
 //{
 //    return [self.xh_md5String stringByAppendingString:@".mp4"];
 //}
--(NSString *)xh_md5String
-{
+-(NSString *)xh_md5String {
+    
     const char *value = [self UTF8String];
     unsigned char outputBuffer[CC_MD5_DIGEST_LENGTH];
     CC_MD5(value, (CC_LONG)strlen(value), outputBuffer);
@@ -31,10 +31,9 @@
         [outputString appendFormat:@"%02x",outputBuffer[count]];
     }
     return outputString;
-    
 }
--(BOOL)xh_containsSubString:(nonnull NSString *)subString
-{
+-(BOOL)xh_containsSubString:(nonnull NSString *)subString {
+    
     if(subString==nil) return NO;
     if([self rangeOfString:subString].location ==NSNotFound) return NO;
     return YES;

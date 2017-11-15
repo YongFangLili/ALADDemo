@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger,ALADJumpAppType){
     eALADAllimd = 1,  /** 唯医 */
     eALADMedPlus = 2, /** 医栈 */
     eALADYding = 3,   /** 医鼎 */
+    eALADWYGK = 4,    /** 唯医骨科 */
 };
 
 #endif /* ALADJumpEnum.h */

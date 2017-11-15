@@ -57,7 +57,4 @@
  */
 - (void)showAD;
 
-
-
-
 @end

@@ -32,11 +32,13 @@
 
 /** 自定义button */
 @property (nonatomic, strong) UIButton * customerButton;
-
+/** 广告类型 */
 @property (nonatomic, assign) ALADJumpAppType appType;
-
+/** adimage图 */
 @property (nonatomic, strong) UIImage *adImage;
+/** 跳转链接 */
 @property (nonatomic, copy) NSString *linkUrl;
+/** 广告持续秒数 */
 @property (nonatomic, assign) NSInteger adContineTime;
 /**记录当前的秒数*/
 @property (nonatomic,assign) NSInteger  count;
